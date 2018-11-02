@@ -9,3 +9,8 @@ way to make headers, bullets, etc.
 The first phase of this README, is to write less than 300 words on what you think you'd like to try to do.
 Put that description into the ProjectDescription.md file.
 
+This is an early "stake in the ground", not a contract to have to do your very first idea. You'll have plenty of chance to
+think about it and modify as needed. But get *something* scratched out.
+
+
+
