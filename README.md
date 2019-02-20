@@ -18,5 +18,12 @@ Put that description into the ProjectDescription.md file. When you're done, comm
 This is an early "stake in the ground", not a contract to have to do your very first idea. You'll have plenty of chance to
 think about it and modify as needed. But get *something* scratched out.
 
+It's best if you write a few paragraphs on the idea itself. Something like 
+
+> Folios is a personal information manager that keeps your very important documents, notes and other
+> digital assets safe and secure. It provides you instant, fingertip access to these personal 
+> items, allowing you to share them with others who are important to you.
+>
+> It is both a mobile and desktop app, with an Amazon cloud-based backend storage vault.
 
 
