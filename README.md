@@ -3,8 +3,7 @@
 a start on the passion projects of cohort 5.0
 
 Fork this project. Edit the ProjectDescription.md file.
-If you want to make it fancy, learn how to use (MarkDown)[https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf] as the
-way to make 
+If you want to make it fancy, learn how to use [MarkDown](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf) as the way to make 
 
 ## headers, 
 
