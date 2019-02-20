@@ -19,7 +19,7 @@ In your passion project's repo, in README.md, is to write about 300 words on wha
 Also put that description into the ProjectDescription.md file of your own repo. If you are uncertain about what 
 project to do, put a list of all your ideas into the file.
 
-This is an early "stake in the ground", not a contract to have to do your very first idea. You'll have plenty of chance to
+This is an early __stake in the ground__, not a contract to have to do your very first idea. You'll have plenty of chance to
 think about it and modify as needed. But get *something* scratched out.
 
 It's best if you write a few paragraphs on the idea itself. Something like 
@@ -35,11 +35,17 @@ It's best if you write a few paragraphs on the idea itself. Something like
 
 This kind of overview can help crystalize the way you think about your project, since you should consider:
 
+__Questions__
+
 * who your app/project serves (who is the user)
 * what information the app tracks for them or provides for them
 * what the backend/database tracks about your users
-* what the overall user concepts areyou'd like the app center on
+* what the overall user concepts are you'd like the app center on
+  * Ex: email apps: have an INBOX, which tracks MESSAGEs, and a way to COMPOSE a MESSAGE
+  * Ex: spreadsheet: has a matrix of CELLs that can hold NUMBERs, TEXT or FORMULAs
+  * Ex: phonebook: has a list of CONTACTs, each of which can have many PHONENUMBERs
 * what problems does your app/project solve
+* is is modelled after another app, if so, how is your different
 
 The app can be a mobile app or a desktop/laptop app, so dream big.
 
