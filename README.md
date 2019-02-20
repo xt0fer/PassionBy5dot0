@@ -25,5 +25,15 @@ It's best if you write a few paragraphs on the idea itself. Something like
 > items, allowing you to share them with others who are important to you.
 >
 > It is both a mobile and desktop app, with an Amazon cloud-based backend storage vault.
+>
+> Folios allows you to categorize various filings by various tags, and gives you clear control of
+> the information you keep.
+
+This kind of overview can help crystalize the way you think about your project, since you should consider:
+
+* who your app/project serves
+* what information the app tracks for them or provides for them
+* what the backend/database tracks about your users
+* what the overall user concepts areyou'd like the app center on
 
 
