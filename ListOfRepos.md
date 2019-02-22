@@ -8,5 +8,6 @@ list of pull requests both in your account and in my repo.
 ### List of Names and URLs
 
 * [Johnny Appleseed](https://github.com/kristofer/ziti)
+* [Joe Fennimore](https://github.com/fenniless/Audio-FX)
 
 Add your name and URL like the one above.
