@@ -9,4 +9,6 @@ list of pull requests both in your account and in my repo.
 
 * [Johnny Appleseed](https://github.com/kristofer/ziti)
 
+* [David Tamulavage](https://github.com/Tamulavage/Passion_project.git)
+
 Add your name and URL like the one above.
