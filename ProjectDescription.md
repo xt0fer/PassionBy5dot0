@@ -13,7 +13,7 @@ A spring Boot app to get and service the request from the Angular App.
 * User Login
 * Save the Data to DB (postgress / MySQl)
 * Send Email / Update Google callender on Weekly basis and reminders with notes.
-* Reading Shopping list from Google notes and update the DB on user login
+* Reading Shopping list from Google notes updated by googleHome and update the DB on user login
 * Update the Shopping list back to google notes.
 
 Initial thought on my Passion project:
