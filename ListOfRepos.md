@@ -8,6 +8,6 @@ list of pull requests both in your account and in my repo.
 ### List of Names and URLs
 
 * [Johnny Appleseed](https://github.com/kristofer/ziti)
-* [Aswathy Kanakarajan] (https://github.com/Aswathykr/PassionBy5dot0)
+* [Aswathy Kanakarajan](https://github.com/Aswathykr/PassionBy5dot0)
 
 Add your name and URL like the one above.
