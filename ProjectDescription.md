@@ -16,5 +16,5 @@ A spring Boot app to get and service the request from the Angular App.
 * Reading Shopping list from Google notes and update the DB on user login
 * Update the Shopping list back to google notes.
 
-
+Initial thought on Passion project:
 * Aswathy Kanakarajan
