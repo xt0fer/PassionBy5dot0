@@ -12,6 +12,12 @@ public class Account {
     @Column(unique = true)
     private String accountName;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    Set<ShopDetail> registeredShops;
+
     @OneToMany(mappedBy = "account")
     private Set<User> users;
+
+    @OneToMany(mappedBy = "account")
+    Set<AccountShoppingItem> shoppingList;
 }

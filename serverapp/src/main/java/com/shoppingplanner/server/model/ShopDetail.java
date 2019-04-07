@@ -15,6 +15,6 @@ public class ShopDetail {
     private Shop shop;
 
     @ManyToMany
-    Set<User> users;
+    Set<Account> accounts;
 
 }

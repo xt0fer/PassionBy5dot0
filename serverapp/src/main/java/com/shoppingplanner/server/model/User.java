@@ -19,9 +19,5 @@ public class User {
     @JoinColumn
     private Account account;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    Set<ShopDetail> registeredShops;
 
-    @OneToMany(mappedBy = "user")
-    Set<UserShoppingItem> shoppingList;
 }

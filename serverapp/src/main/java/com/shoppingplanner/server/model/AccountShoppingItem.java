@@ -3,7 +3,7 @@ package com.shoppingplanner.server.model;
 import javax.persistence.*;
 
 @Entity
-public class UserShoppingItem {
+public class AccountShoppingItem {
 
     @Id
     @GeneratedValue
@@ -11,7 +11,7 @@ public class UserShoppingItem {
 
     @ManyToOne
     @JoinColumn
-    User user;
+    Account account;
 
     @ManyToOne
     @JoinColumn
