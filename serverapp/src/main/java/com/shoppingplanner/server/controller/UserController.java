@@ -4,6 +4,8 @@ import com.shoppingplanner.server.model.Account;
 import com.shoppingplanner.server.model.User;
 import com.shoppingplanner.server.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -13,8 +15,10 @@ public class UserController {
     private UserService service;
 
     @GetMapping("/user/checklogin")
-    public boolean isValidLogin(@RequestBody User user){
-        return service.isValidLogin();
+    public ResponseEntity<User> isValidLogin(@RequestBody User user){
+        User returnedUser = service.isValidLogin(user);
+        return new ResponseEntity<>(returnedUser, (returnedUser == null) ?
+                                                HttpStatus.NOT_FOUND : HttpStatus.OK);
     }
 
     @PostMapping("/user/")
