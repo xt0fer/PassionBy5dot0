@@ -10,11 +10,31 @@ public class ShopDetail {
     private Long id;
     private String address;
 
-    @ManyToOne
-    @JoinColumn
-    private Shop shop;
 
     @ManyToMany
     Set<Account> accounts;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Set<Account> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(Set<Account> accounts) {
+        this.accounts = accounts;
+    }
 }
