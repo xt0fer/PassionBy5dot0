@@ -12,7 +12,7 @@ public class Shop {
     private Long id;
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "shop")
     Set<ShopDetail> shopDetails;
 
     public Long getId() {
@@ -38,4 +38,5 @@ public class Shop {
     public void setShopDetails(Set<ShopDetail> shopDetails) {
         this.shopDetails = shopDetails;
     }
+
 }

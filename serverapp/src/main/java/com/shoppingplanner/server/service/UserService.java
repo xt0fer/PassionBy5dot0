@@ -15,6 +15,7 @@ public class UserService {
     }
 
     public User createUser(User user) {
+        user.setUserName(user.getUserName().toLowerCase());
         return repository.save(user);
     }
 

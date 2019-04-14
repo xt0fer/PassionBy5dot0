@@ -1,9 +1,6 @@
 package com.shoppingplanner.server.model;
 
-import com.shoppingplanner.server.model.modelenum.AccountType;
-
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 public class User {

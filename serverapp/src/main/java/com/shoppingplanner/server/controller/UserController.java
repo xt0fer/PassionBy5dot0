@@ -14,14 +14,17 @@ public class UserController {
     @Autowired
     private UserService service;
 
-    @GetMapping("/user/checklogin")
+    @PutMapping("/user/checklogin")
+    @CrossOrigin(origins = "http://localhost:8100")
     public ResponseEntity<User> isValidLogin(@RequestBody User user){
+        System.out.println("*********"+user.getPassword()+ " "+ user.getUserName());
         User returnedUser = service.isValidLogin(user);
         return new ResponseEntity<>(returnedUser, (returnedUser == null) ?
                                                 HttpStatus.NOT_FOUND : HttpStatus.OK);
     }
 
     @PostMapping("/user/")
+    @CrossOrigin(origins = "http://localhost:8100")
     public User createUser(@RequestBody User user){
         return service.createUser(user);
     }

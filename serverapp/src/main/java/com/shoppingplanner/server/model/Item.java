@@ -1,10 +1,8 @@
 package com.shoppingplanner.server.model;
 
-import com.shoppingplanner.server.model.modelenum.ItemCategory;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Item {
@@ -13,5 +11,11 @@ public class Item {
     private Long id;
 
     private String name;
-    private ItemCategory category;
+
+    @ManyToOne
+    @JoinColumn
+    private Category category;
+
+    @ManyToMany(mappedBy = "shoppingList")
+    private Set<Account> accountSet;
 }

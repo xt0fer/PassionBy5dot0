@@ -21,8 +21,9 @@ public class Account {
     @OneToMany(mappedBy = "account")
     private Set<User> users;
 
-    @OneToMany(mappedBy = "account")
-    Set<AccountShoppingItem> shoppingList;
+    @ManyToMany(cascade = CascadeType.ALL)
+            @JoinTable
+    Set<Item> shoppingList;
 
     public Long getId() {
         return id;
@@ -56,11 +57,4 @@ public class Account {
         this.users = users;
     }
 
-    public Set<AccountShoppingItem> getShoppingList() {
-        return shoppingList;
-    }
-
-    public void setShoppingList(Set<AccountShoppingItem> shoppingList) {
-        this.shoppingList = shoppingList;
-    }
 }
