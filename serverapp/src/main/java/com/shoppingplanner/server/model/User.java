@@ -1,6 +1,7 @@
 package com.shoppingplanner.server.model;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 public class User {
@@ -16,6 +17,15 @@ public class User {
     @ManyToOne
     @JoinColumn
     private Account account;
+
+    public User() {
+    }
+
+    public User(String userName, String password, Long id) {
+        this.userName = userName;
+        this.password = password;
+        this.id = id;
+    }
 
     public Long getId() {
         return id;
@@ -55,5 +65,22 @@ public class User {
 
     public void setAccount(Account account) {
         this.account = account;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        return Objects.equals(id, user.id) &&
+                Objects.equals(userName, user.userName) &&
+                Objects.equals(password, user.password) &&
+                accountType == user.accountType &&
+                Objects.equals(account, user.account);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, userName, password, accountType, account);
     }
 }

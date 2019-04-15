@@ -8,9 +8,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
-    @Autowired
+
     private UserRepository repository;
     public User isValidLogin(User user) {
+        user.setUserName(user.getUserName().toLowerCase());
         return repository.findByUserNameAndPassword(user.getUserName(), user.getPassword());
     }
 
@@ -26,5 +27,10 @@ public class UserService {
             return repository.save(user);
         }
         return null;
+    }
+
+    @Autowired
+    public UserService(UserRepository repository) {
+        this.repository = repository;
     }
 }

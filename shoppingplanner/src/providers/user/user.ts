@@ -9,13 +9,15 @@ import { User } from '../../user';
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
+
 @Injectable()
 export class UserProvider {
   loggedIn = false; 
   constructor(public http: HttpClient) {
     console.log('Hello UserProvider Provider');
   }
-  checkUserUrl = 'http://localhost:8080//user/checklogin'
+
+  checkUserUrl = 'http://192.168.0.26:8080//user/checklogin'
   
   /** GET heroes from the server */
   checkUserLogin (user: User): Observable<User> {

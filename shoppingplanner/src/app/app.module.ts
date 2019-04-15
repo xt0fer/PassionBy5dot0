@@ -14,6 +14,7 @@ import { HttpClientModule }    from '@angular/common/http';
 import { LoginPage } from '../pages/login/login';
 import { CategoryProvider } from '../providers/category/category';
 import { CategoryPage } from '../pages/category/category';
+import { ShoppingItemsProvider } from '../providers/shopping-items/shopping-items';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { CategoryPage } from '../pages/category/category';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserProvider,
-    CategoryProvider
+    CategoryProvider,
+    ShoppingItemsProvider
   ]
 })
 export class AppModule {}

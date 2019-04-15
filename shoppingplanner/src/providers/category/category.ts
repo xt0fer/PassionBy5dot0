@@ -14,7 +14,7 @@ export class CategoryProvider {
   constructor(public http: HttpClient) {
     console.log('Hello CategoryProvider Provider');
   }
-  getCategoryUrl = 'http://localhost:8080/category/'
+  getCategoryUrl = 'http://192.168.0.26:8080/category/'
   
   /** GET heroes from the server */
   getCategory (): Observable<Category[]> {

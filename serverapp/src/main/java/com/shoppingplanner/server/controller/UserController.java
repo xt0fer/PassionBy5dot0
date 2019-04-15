@@ -15,23 +15,27 @@ public class UserController {
     private UserService service;
 
     @PutMapping("/user/checklogin")
-    @CrossOrigin(origins = "http://localhost:8100")
+    @CrossOrigin
     public ResponseEntity<User> isValidLogin(@RequestBody User user){
         System.out.println("*********"+user.getPassword()+ " "+ user.getUserName());
         User returnedUser = service.isValidLogin(user);
         return new ResponseEntity<>(returnedUser, (returnedUser == null) ?
-                                                HttpStatus.NOT_FOUND : HttpStatus.OK);
+                                                HttpStatus.BAD_REQUEST : HttpStatus.OK);
     }
 
     @PostMapping("/user/")
-    @CrossOrigin(origins = "http://localhost:8100")
-    public User createUser(@RequestBody User user){
-        return service.createUser(user);
+    @CrossOrigin
+    public ResponseEntity<User> createUser(@RequestBody User user){
+        User returnedUser = service.createUser(user);
+        return new ResponseEntity<>(returnedUser, (returnedUser == null) ?
+                HttpStatus.BAD_REQUEST : HttpStatus.OK);
     }
 
     @PutMapping("/user/account/{id}")
-    public User createUser(@PathVariable Long id, @RequestBody Account account){
-        return service.setAccount(id, account);
+    public ResponseEntity<User> setAccountForUser(@PathVariable Long id, @RequestBody Account account){
+        User returnedUser =  service.setAccount(id, account);
+        return new ResponseEntity<>(returnedUser, (returnedUser == null) ?
+                HttpStatus.BAD_REQUEST : HttpStatus.OK);
     }
 
 }

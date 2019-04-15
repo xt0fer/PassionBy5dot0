@@ -20,8 +20,8 @@ export class CategoryPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private categoryProvider: CategoryProvider) {
       this.categoryProvider.getCategory()
-        .subscribe(categories => {
-          this.categories = categories}, error => this.logError("Error response")
+        .subscribe(categories => {console.log("here");
+          this.categories = categories;}, error => this.logError("Error response")
           );
   }
 
