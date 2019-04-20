@@ -1,6 +1,9 @@
 package com.caraeppes.EduWaiterAppServer.models;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.Map;
@@ -8,6 +11,8 @@ import java.util.Map;
 @Entity
 @Table(name = "restaurants")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class,
+        property = "@id")
 public class Restaurant {
 
     @Id
