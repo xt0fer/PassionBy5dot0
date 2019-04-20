@@ -25,6 +25,7 @@ export class AdminRegisterComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       firstName: '',
       lastName: '',
+      username: '',
       password: ''
     });
   }
@@ -36,6 +37,6 @@ export class AdminRegisterComponent implements OnInit {
         this.storage.store("admin", account);
       }
     );
-    this.router.navigate(['/home']);
+    this.router.navigate(['/register/restaurant']);
   }
 }

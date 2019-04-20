@@ -29,6 +29,14 @@ public class AdminAccountService {
         return adminAccountRepository.findAll();
     }
 
+    public AdminAccount findByUsernameAndPassword(String username, String password){
+        return adminAccountRepository.findAdminAccountByUsernameAndPassword(username, password);
+    }
+
+    public AdminAccount findByUsername(String username){
+        return adminAccountRepository.findAdminAccountByUsername(username);
+    }
+
     public AdminAccount update(AdminAccount adminAccount, Long id){
         AdminAccount original = adminAccountRepository.getOne(id);
         original.setFirstName(adminAccount.getFirstName());

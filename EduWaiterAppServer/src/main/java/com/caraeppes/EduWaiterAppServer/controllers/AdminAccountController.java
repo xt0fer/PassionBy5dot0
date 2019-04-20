@@ -30,6 +30,11 @@ public class AdminAccountController {
         return new ResponseEntity<>(adminAccountService.findAll(), HttpStatus.OK);
     }
 
+    @GetMapping("/username/{username}")
+    public ResponseEntity<AdminAccount> findByUsername(@PathVariable String username){
+        return new ResponseEntity<>(adminAccountService.findByUsername(username), HttpStatus.OK);
+    }
+
     @PostMapping
     public ResponseEntity<AdminAccount> create(@RequestBody AdminAccount adminAccount) {
         return new ResponseEntity<>(adminAccountService.create(adminAccount), HttpStatus.CREATED);

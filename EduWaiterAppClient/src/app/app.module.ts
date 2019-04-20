@@ -10,13 +10,23 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {AccountService} from "./services/account.service";
 import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 import { RestaurantRegisterComponent } from './components/register/restaurant-register/restaurant-register.component';
+import { EmployeeRegisterComponent } from './components/register/employee-register/employee-register.component';
+import { RegisterComponent } from './components/register/register/register.component';
+import { LoginComponent } from './components/login/login.component';
+import { EmployeeLoginComponent } from './components/login/employee-login/employee-login.component';
+import { AdminLoginComponent } from './components/login/admin-login/admin-login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AdminRegisterComponent,
-    RestaurantRegisterComponent
+    RestaurantRegisterComponent,
+    EmployeeRegisterComponent,
+    RegisterComponent,
+    LoginComponent,
+    EmployeeLoginComponent,
+    AdminLoginComponent
   ],
   imports: [
     BrowserModule,
