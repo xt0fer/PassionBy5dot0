@@ -1,10 +1,11 @@
 package com.caraeppes.EduWaiterAppServer.models;
 
+import com.caraeppes.EduWaiterAppServer.utilities.IngredientSerializer;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Map;
 
 @Entity
 @Table(name = "menu_items")
@@ -26,8 +27,9 @@ public class MenuItem {
             name="menu_item_ingredients",
             joinColumns=@JoinColumn(name="menu_item_id", referencedColumnName="menu_item_id"),
             inverseJoinColumns=@JoinColumn(name="ingredient_id", referencedColumnName="ingredient_id"))
+    @JsonSerialize(using = IngredientSerializer.class)
     private List<Ingredient> ingredients;
-    @ManyToMany(mappedBy = "menuItems")
+    @ManyToMany(mappedBy = "menuItems", targetEntity = Menu.class)
     private List<Menu> menus;
 
     public Long getId() {
@@ -77,4 +79,5 @@ public class MenuItem {
     public void setMenus(List<Menu> menus) {
         this.menus = menus;
     }
+
 }

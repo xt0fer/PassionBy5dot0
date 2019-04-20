@@ -16,12 +16,8 @@ public class Ingredient {
     private Long id;
     @Column(name = "name")
     private String name;
-    @ManyToMany
-    @JoinTable(
-            name="ingredient_allergens",
-            joinColumns=@JoinColumn(name="ingredient_id", referencedColumnName="ingredient_id"),
-            inverseJoinColumns=@JoinColumn(name="allergen_id", referencedColumnName="allergen_id"))
-    private List<Allergen> allergens;
+    @Column(name="allergen")
+    private Boolean allergen;
     @ManyToMany(mappedBy="ingredients")
     private List<MenuItem> menuItems;
 
@@ -41,12 +37,12 @@ public class Ingredient {
         this.name = name;
     }
 
-    public List<Allergen> getAllergens() {
-        return allergens;
+    public Boolean getAllergen() {
+        return allergen;
     }
 
-    public void setAllergens(List<Allergen> allergens) {
-        this.allergens = allergens;
+    public void setAllergen(Boolean allergen) {
+        this.allergen = allergen;
     }
 
     public List<MenuItem> getMenuItems() {
