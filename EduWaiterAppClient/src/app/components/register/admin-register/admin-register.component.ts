@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup} from '@angular/forms';
 import {Router} from "@angular/router";
-import {AccountService} from "../../services/account.service";
-import {first} from "rxjs/operators";
+import {AccountService} from "../../../services/account.service";
 import {LocalStorageService} from "ngx-webstorage";
 
 @Component({
@@ -37,7 +36,6 @@ export class AdminRegisterComponent implements OnInit {
         this.storage.store("admin", account);
       }
     );
-    console.log(this.storage.retrieve("admin"));
+    this.router.navigate(['/home']);
   }
-
 }

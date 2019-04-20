@@ -15,6 +15,8 @@ public class Restaurant {
     private Long id;
     @Column(name = "name")
     private String name;
+    @Column(name = "password")
+    private String password;
     @OneToMany(mappedBy = "restaurant")
     private List<Menu> menus;
     @OneToMany(mappedBy = "restaurant")
@@ -23,8 +25,6 @@ public class Restaurant {
     private List<EmployeeAccount> employees;
     @OneToMany(mappedBy = "restaurant")
     private List<Fact> facts;
-
-
 
     public Long getId() {
         return id;
@@ -40,6 +40,14 @@ public class Restaurant {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public List<Menu> getMenus() {

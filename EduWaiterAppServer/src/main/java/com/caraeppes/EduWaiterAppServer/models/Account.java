@@ -23,7 +23,6 @@ public abstract class Account {
     @Column(name = "last_name")
     private String lastName;
     @Column(name ="password")
-    @JsonIgnore
     private String password;
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = Restaurant.class)
     @JoinColumn(name="restaurant_id")
