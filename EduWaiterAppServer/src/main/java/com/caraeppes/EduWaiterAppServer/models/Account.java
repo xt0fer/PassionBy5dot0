@@ -1,5 +1,6 @@
 package com.caraeppes.EduWaiterAppServer.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonRawValue;
 
 import javax.persistence.*;
@@ -21,6 +22,9 @@ public abstract class Account {
     private String firstName;
     @Column(name = "last_name")
     private String lastName;
+    @Column(name ="password")
+    @JsonIgnore
+    private String password;
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = Restaurant.class)
     @JoinColumn(name="restaurant_id")
     @JsonRawValue()
@@ -48,6 +52,14 @@ public abstract class Account {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Restaurant getRestaurant() {
