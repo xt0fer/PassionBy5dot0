@@ -18,6 +18,8 @@ public class Fact {
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="restaurant_id")
     private Restaurant restaurant;
+    @Column(name = "entity_id")
+    private Long entityId;
 
     public Long getId() {
         return id;
@@ -41,5 +43,13 @@ public class Fact {
 
     public void setRestaurant(Restaurant restaurant) {
         this.restaurant = restaurant;
+    }
+
+    public Long getEntityId() {
+        return entityId;
+    }
+
+    public void setEntityId(Long entityId) {
+        this.entityId = entityId;
     }
 }

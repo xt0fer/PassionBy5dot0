@@ -21,12 +21,14 @@ public class MenuItem {
     private String description;
     @Column(name = "price")
     private Double price;
-    @Column(name = "ingredients")
     @ManyToMany
+    @JoinTable(
+            name="menu_item_ingredients",
+            joinColumns=@JoinColumn(name="menu_item_id", referencedColumnName="menu_item_id"),
+            inverseJoinColumns=@JoinColumn(name="ingredient_id", referencedColumnName="ingredient_id"))
     private List<Ingredient> ingredients;
-    @Column(name = "facts")
-    @OneToMany
-    private Map<Long, Fact> factMap;
+    @ManyToMany(mappedBy = "menuItems")
+    private List<Menu> menus;
 
     public Long getId() {
         return id;
@@ -68,11 +70,11 @@ public class MenuItem {
         this.ingredients = ingredients;
     }
 
-    public Map<Long, Fact> getFactMap() {
-        return factMap;
+    public List<Menu> getMenus() {
+        return menus;
     }
 
-    public void setFactMap(Map<Long, Fact> factMap) {
-        this.factMap = factMap;
+    public void setMenus(List<Menu> menus) {
+        this.menus = menus;
     }
 }

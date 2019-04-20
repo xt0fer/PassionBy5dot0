@@ -3,6 +3,7 @@ package com.caraeppes.EduWaiterAppServer.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "allergens")
@@ -17,6 +18,8 @@ public class Allergen {
     private String name;
     @Column(name = "description")
     private String description;
+    @ManyToMany(mappedBy = "allergens")
+    private List<Ingredient> ingredients;
 
     public Long getId() {
         return id;
@@ -40,5 +43,13 @@ public class Allergen {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
     }
 }

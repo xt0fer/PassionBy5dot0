@@ -2,8 +2,13 @@ package com.caraeppes.EduWaiterAppServer.models;
 
 import javax.persistence.*;
 
-@Entity
 @Table(name = "accounts")
+@Inheritance(
+        strategy = InheritanceType.JOINED
+)
+@MappedSuperclass
+@DiscriminatorColumn(name="account_type",
+        discriminatorType = DiscriminatorType.STRING)
 public abstract class Account {
 
     @Id
@@ -14,7 +19,7 @@ public abstract class Account {
     private String firstName;
     @Column(name = "last_name")
     private String lastName;
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Restaurant.class)
     @JoinColumn(name="restaurant_id")
     private Restaurant restaurant;
 

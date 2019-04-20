@@ -19,7 +19,9 @@ public class Restaurant {
     @OneToMany(mappedBy = "restaurant")
     private List<Menu> menus;
     @OneToMany(mappedBy = "restaurant")
-    private List<Account> staff;
+    private List<AdminAccount> admin;
+    @OneToMany(mappedBy = "restaurant")
+    private List<EmployeeAccount> employees;
     @OneToMany(mappedBy = "restaurant")
     private List<Fact> facts;
 
@@ -47,12 +49,20 @@ public class Restaurant {
         this.menus = menus;
     }
 
-    public List<Account> getStaff() {
-        return staff;
+    public List<AdminAccount> getAdmin() {
+        return admin;
     }
 
-    public void setStaff(List<Account> staff) {
-        this.staff = staff;
+    public void setAdmin(List<AdminAccount> admin) {
+        this.admin = admin;
+    }
+
+    public List<EmployeeAccount> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<EmployeeAccount> employees) {
+        this.employees = employees;
     }
 
     public List<Fact> getFacts() {

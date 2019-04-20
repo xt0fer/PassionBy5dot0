@@ -19,12 +19,12 @@ public class Menu {
     private String name;
     @Column(name = "description")
     private String description;
-    @Column(name = "menu_items")
-    @OneToMany
+    @ManyToMany
+    @JoinTable(
+            name="menu_menu_items",
+            joinColumns=@JoinColumn(name="menu_id", referencedColumnName="menu_id"),
+            inverseJoinColumns=@JoinColumn(name="menu_item_id", referencedColumnName = "menu_item_id"))
     private List<MenuItem> menuItems;
-    @Column(name = "facts")
-    @OneToMany
-    private Map<Long, Fact> factMap;
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="restaurant_id")
     private Restaurant restaurant;
@@ -59,14 +59,6 @@ public class Menu {
 
     public void setMenuItems(List<MenuItem> menuItems) {
         this.menuItems = menuItems;
-    }
-
-    public Map<Long, Fact> getFactMap() {
-        return factMap;
-    }
-
-    public void setFactMap(Map<Long, Fact> factMap) {
-        this.factMap = factMap;
     }
 
     public Restaurant getRestaurant() {

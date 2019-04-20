@@ -16,9 +16,14 @@ public class Ingredient {
     private Long id;
     @Column(name = "name")
     private String name;
-    @Column(name = "allergens")
     @ManyToMany
+    @JoinTable(
+            name="ingredient_allergens",
+            joinColumns=@JoinColumn(name="ingredient_id", referencedColumnName="ingredient_id"),
+            inverseJoinColumns=@JoinColumn(name="allergen_id", referencedColumnName="allergen_id"))
     private List<Allergen> allergens;
+    @ManyToMany(mappedBy="ingredients")
+    private List<MenuItem> menuItems;
 
     public Long getId() {
         return id;
@@ -42,5 +47,13 @@ public class Ingredient {
 
     public void setAllergens(List<Allergen> allergens) {
         this.allergens = allergens;
+    }
+
+    public List<MenuItem> getMenuItems() {
+        return menuItems;
+    }
+
+    public void setMenuItems(List<MenuItem> menuItems) {
+        this.menuItems = menuItems;
     }
 }
