@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { AdminRegisterComponent } from './components/register/admin-register/admin-register.component';
-import {NgxWebstorageModule} from "ngx-webstorage";
+import {LocalStorageService, NgxWebstorageModule} from "ngx-webstorage";
 import {HttpClientModule} from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {AccountService} from "./services/account.service";
@@ -41,7 +41,7 @@ import { RestaurantComponent } from './components/restaurant/restaurant.componen
     ShowHidePasswordModule,
     NgxWebstorageModule.forRoot()
   ],
-  providers: [AccountService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

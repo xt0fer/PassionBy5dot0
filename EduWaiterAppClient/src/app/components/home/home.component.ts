@@ -8,36 +8,28 @@ import {Restaurant} from "../../models/restaurant";
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css', '../../app.component.css']
 })
 export class HomeComponent implements OnInit {
 
   currentAdmin: AdminAccount;
   currentEmployee: EmployeeAccount;
   currentRestaurant: Restaurant;
-  loggedIn: boolean;
 
-  constructor(private storage: LocalStorageService,
-              private accountService: AccountService) { }
+
+  constructor(private storage: LocalStorageService) { }
 
   ngOnInit() {
     this.currentAdmin = this.storage.retrieve("admin");
     this.currentEmployee = this.storage.retrieve("employee");
     this.currentRestaurant = this.storage.retrieve("restaurant");
-    this.loggedIn = this.currentEmployee != null || this.currentAdmin != null;
   }
 
   ngAfterContentChecked(){
     this.currentAdmin = this.storage.retrieve("admin");
     this.currentEmployee = this.storage.retrieve("employee");
     this.currentRestaurant = this.storage.retrieve("restaurant");
-    this.loggedIn = this.currentEmployee != null || this.currentAdmin != null;
   }
 
-
-  logout(){
-    this.accountService.logout();
-    this.loggedIn = false;
-  }
 
 }
