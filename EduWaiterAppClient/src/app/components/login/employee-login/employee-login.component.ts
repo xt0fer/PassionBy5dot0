@@ -13,6 +13,7 @@ export class EmployeeLoginComponent implements OnInit {
 
   loginForm: FormGroup;
   submitted: boolean;
+  response: any;
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
@@ -27,6 +28,14 @@ export class EmployeeLoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this.submitted = true;
+    let username = this.loginForm.controls.username.value;
+    let password = this.loginForm.controls.password.value;
+    this.accountService.loginEmployee(username, password).subscribe(success => {
+      this.response = success;
+      this.submitted = true;
+      if(this.response instanceof Object){
+        this.router.navigate(["/home"]);
+      }
+    });
   }
 }

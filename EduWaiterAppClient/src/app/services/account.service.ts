@@ -34,30 +34,65 @@ export class AccountService {
     return this.http.get<AdminAccount>(`${this.url}/admin/username/${username}`);
   }
 
-  loginAdmin(username: string, password: string){
-   return this.findAdminByUsername(username).pipe(
+  findEmployeeByUsername(username: string): Observable<EmployeeAccount>{
+    return this.http.get<EmployeeAccount>(`${this.url}/employees/username/${username}`)
+  }
+
+  loginAdmin(username: string, password: string) {
+    return this.findAdminByUsername(username).pipe(
       map(admin => {
         this.storage.store("admin", admin);
-          if (admin == null) {
-            return "Invalid username!";
-          }
-          return admin;
-        }),
+        if (admin == null) {
+          return "Invalid username!";
+        }
+        return admin;
+      }),
       map(admin => {
-        if(admin != "Invalid username!") {
-          if (admin.password !== password) {
+        if (admin != "Invalid username!") {
+          if ((admin as AdminAccount).password !== password) {
             return "Invalid password!";
           }
         }
         return admin;
       }),
-     map( admin => {
-       if((admin != "Invalid username!") && (admin != "Invalid password!")) {
-         return this.storage.retrieve("admin");
-       }
-       return admin;
-     })
-   );
+      map(admin => {
+        if ((admin != "Invalid username!") && (admin != "Invalid password!")) {
+          return this.storage.retrieve("admin");
+        }
+        return admin;
+      })
+    );
+  }
+
+  loginEmployee(username: string, password: string) {
+    return this.findEmployeeByUsername(username).pipe(
+      map(employee => {
+        this.storage.store("employee", employee);
+        if (employee == null) {
+          return "Invalid username!";
+        }
+        return employee;
+      }),
+      map(employee => {
+        if (employee != "Invalid username!") {
+          if ((employee as EmployeeAccount).password !== password) {
+            return "Invalid password!";
+          }
+        }
+        return employee;
+      }),
+      map(employee => {
+        if ((employee != "Invalid username!") && (employee != "Invalid password!")) {
+          return this.storage.retrieve("employee");
+        }
+        return employee;
+      })
+    );
+  }
+
+  logout() {
+    this.storage.store("admin", null);
+    this.storage.store("employee", null);
   }
 
 }

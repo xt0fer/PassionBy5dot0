@@ -21,12 +21,16 @@ public class EmployeeAccountService {
         return employeeAccountRepository.save(employeeAccount);
     }
 
-    public EmployeeAccount findbyId(Long id){
+    public EmployeeAccount findById(Long id){
         return employeeAccountRepository.getOne(id);
     }
 
     public List<EmployeeAccount> findAll(){
         return employeeAccountRepository.findAll();
+    }
+
+    public EmployeeAccount findByUsername(String username){
+        return employeeAccountRepository.findByUsername(username);
     }
 
     public EmployeeAccount update(EmployeeAccount employeeAccount, Long id){

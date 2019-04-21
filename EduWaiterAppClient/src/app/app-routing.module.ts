@@ -10,6 +10,7 @@ import {EmployeeLoginComponent} from "./components/login/employee-login/employee
 import {AdminLoginComponent} from "./components/login/admin-login/admin-login.component";
 
 const routes: Routes = [
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'login/employee', component: EmployeeLoginComponent},

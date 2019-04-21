@@ -36,6 +36,7 @@ export class EmployeeRegisterComponent implements OnInit {
       "{" +
       "\"firstName\" : \"" + this.registerForm.controls.firstName.value + "\"," +
       "\"lastName\" : \"" + this.registerForm.controls.lastName.value + "\"," +
+      "\"username\" : \"" + this.registerForm.controls.username.value + "\"," +
       "\"password\" : \"" + this.registerForm.controls.password.value + "\"," +
       "\"restaurant\" : {\"id\" : " + this.registerForm.controls.restaurantId.value +"}" +
       "}";

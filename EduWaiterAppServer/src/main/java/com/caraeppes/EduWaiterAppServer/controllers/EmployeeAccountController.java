@@ -22,12 +22,17 @@ public class EmployeeAccountController {
 
     @GetMapping("/{id}")
     public ResponseEntity<EmployeeAccount> findById(@PathVariable Long id){
-        return new ResponseEntity<>(employeeAccountService.findbyId(id), HttpStatus.OK);
+        return new ResponseEntity<>(employeeAccountService.findById(id), HttpStatus.OK);
     }
 
     @GetMapping
     public ResponseEntity<List<EmployeeAccount>> findAll(){
         return new ResponseEntity<>(employeeAccountService.findAll(), HttpStatus.OK);
+    }
+
+    @GetMapping("/username/{username}")
+    public ResponseEntity<EmployeeAccount> findByUsername(@PathVariable String username){
+        return new ResponseEntity<>(employeeAccountService.findByUsername(username), HttpStatus.OK);
     }
 
     @PostMapping

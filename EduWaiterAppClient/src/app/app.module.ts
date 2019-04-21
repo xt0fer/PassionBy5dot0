@@ -15,6 +15,8 @@ import { RegisterComponent } from './components/register/register/register.compo
 import { LoginComponent } from './components/login/login.component';
 import { EmployeeLoginComponent } from './components/login/employee-login/employee-login.component';
 import { AdminLoginComponent } from './components/login/admin-login/admin-login.component';
+import { AdminHomeComponent } from './components/home/admin-home/admin-home.component';
+import { EmployeeHomeComponent } from './components/home/employee-home/employee-home.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { AdminLoginComponent } from './components/login/admin-login/admin-login.
     RegisterComponent,
     LoginComponent,
     EmployeeLoginComponent,
-    AdminLoginComponent
+    AdminLoginComponent,
+    AdminHomeComponent,
+    EmployeeHomeComponent
   ],
   imports: [
     BrowserModule,

@@ -19,8 +19,7 @@ export class AdminLoginComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
-              private accountService: AccountService,
-              private storage: LocalStorageService) {
+              private accountService: AccountService) {
   }
 
   ngOnInit() {
