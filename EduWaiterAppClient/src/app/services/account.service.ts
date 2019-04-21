@@ -5,6 +5,8 @@ import {Observable} from "rxjs";
 import {map} from 'rxjs/operators';
 import {EmployeeAccount} from "../models/employee-account";
 import {LocalStorageService} from "ngx-webstorage";
+import {Restaurant} from "../models/restaurant";
+import {RestaurantService} from "./restaurant.service";
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -19,7 +21,8 @@ export class AccountService {
   private url = "/api/accounts";
 
   constructor(private http: HttpClient,
-              private storage: LocalStorageService) {
+              private storage: LocalStorageService,
+              private restaurantService: RestaurantService) {
   }
 
   registerAdmin(adminAccount: AdminAccount): Observable<AdminAccount> {
@@ -43,20 +46,20 @@ export class AccountService {
       map(admin => {
         this.storage.store("admin", admin);
         if (admin == null) {
-          return "Invalid username!";
+          return "Invalid Username!";
         }
         return admin;
       }),
       map(admin => {
-        if (admin != "Invalid username!") {
+        if (admin != "Invalid Username!") {
           if ((admin as AdminAccount).password !== password) {
-            return "Invalid password!";
+            return "Invalid Password!";
           }
         }
         return admin;
       }),
       map(admin => {
-        if ((admin != "Invalid username!") && (admin != "Invalid password!")) {
+        if ((admin != "Invalid Username!") && (admin != "Invalid Password!")) {
           return this.storage.retrieve("admin");
         }
         return admin;
@@ -69,12 +72,12 @@ export class AccountService {
       map(employee => {
         this.storage.store("employee", employee);
         if (employee == null) {
-          return "Invalid username!";
+          return "Invalid Username!";
         }
         return employee;
       }),
       map(employee => {
-        if (employee != "Invalid username!") {
+        if (employee != "Invalid Username!") {
           if ((employee as EmployeeAccount).password !== password) {
             return "Invalid password!";
           }
@@ -82,7 +85,7 @@ export class AccountService {
         return employee;
       }),
       map(employee => {
-        if ((employee != "Invalid username!") && (employee != "Invalid password!")) {
+        if ((employee != "Invalid Username!") && (employee != "Invalid Password!")) {
           return this.storage.retrieve("employee");
         }
         return employee;
@@ -90,9 +93,19 @@ export class AccountService {
     );
   }
 
+  updateAdminRestaurant(id: number, restaurantId: number): Observable<AdminAccount> {
+    let restaurant: Restaurant;
+    this.restaurantService.findById(restaurantId).subscribe(result=> {
+      restaurant = result;
+    });
+    return this.http.put(`${this.url}/admin/${id}/updateRestaurant?restaurantId=${restaurantId}`,
+      restaurant, httpOptions);
+  }
+
   logout() {
     this.storage.store("admin", null);
     this.storage.store("employee", null);
+    this.storage.store("restaurant", null);
   }
 
 }

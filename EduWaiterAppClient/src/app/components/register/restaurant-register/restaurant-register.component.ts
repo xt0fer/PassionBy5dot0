@@ -32,7 +32,9 @@ export class RestaurantRegisterComponent implements OnInit {
     this.submitted = true;
     this.restaurantService.registerRestaurant(this.registerForm.value).subscribe(
       restaurant=> {
-        this.storage.store("restaurant", restaurant);
+        this.restaurantService.addAdmin(restaurant, this.storage.retrieve("admin").id).subscribe(restaurant =>{
+          this.storage.store("restaurant", restaurant);
+        });
       }
     );
     this.router.navigate(['/home']);

@@ -1,6 +1,8 @@
 package com.caraeppes.EduWaiterAppServer.services;
 
+import com.caraeppes.EduWaiterAppServer.models.AdminAccount;
 import com.caraeppes.EduWaiterAppServer.models.Restaurant;
+import com.caraeppes.EduWaiterAppServer.repositories.AdminAccountRepository;
 import com.caraeppes.EduWaiterAppServer.repositories.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,10 +13,14 @@ import java.util.List;
 public class RestaurantService {
 
     private RestaurantRepository restaurantRepository;
+    private AdminAccountRepository adminAccountRepository;
 
     @Autowired
-    public RestaurantService(RestaurantRepository restaurantRepository) {
+    public RestaurantService(RestaurantRepository restaurantRepository,
+                             AdminAccountRepository adminAccountRepository) {
         this.restaurantRepository = restaurantRepository;
+        this.adminAccountRepository = adminAccountRepository;
+
     }
 
     public Restaurant create(Restaurant restaurant){
@@ -37,6 +43,14 @@ public class RestaurantService {
         original.setAdmin(restaurant.getAdmin());
         original.setFacts(restaurant.getFacts());
         return restaurantRepository.save(original);
+    }
+
+    public Restaurant addAdmin(Restaurant restaurant, Long adminId){
+        AdminAccount admin = adminAccountRepository.getOne(adminId);
+        restaurant.getAdmin().add(admin);
+        admin.setRestaurant(restaurant);
+        adminAccountRepository.save(admin);
+        return restaurantRepository.save(restaurant);
     }
 
     public Boolean deleteById(Long id){

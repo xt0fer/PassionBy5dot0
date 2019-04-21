@@ -5,6 +5,8 @@ import {AccountService} from "../../../services/account.service";
 import {LocalStorageService} from "ngx-webstorage";
 import {Local} from "protractor/built/driverProviders";
 import {AdminAccount} from "../../../models/admin-account";
+import {Restaurant} from "../../../models/restaurant";
+import {RestaurantService} from "../../../services/restaurant.service";
 
 @Component({
   selector: 'app-admin-login',
@@ -19,7 +21,9 @@ export class AdminLoginComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
-              private accountService: AccountService) {
+              private accountService: AccountService,
+              private storage: LocalStorageService,
+              private restaurantService: RestaurantService) {
   }
 
   ngOnInit() {
@@ -38,7 +42,16 @@ export class AdminLoginComponent implements OnInit {
       this.submitted = true;
       if(this.response instanceof Object){
         this.router.navigate(["/home"]);
+        this.updateRestaurant(username);
       }
+    });
+  }
+
+  updateRestaurant(username: String){
+    this.accountService.findAdminByUsername(username).subscribe(admin => {
+      this.restaurantService.findById(admin.restaurant as number).subscribe(restaurant => {
+        this.storage.store("restaurant", restaurant);
+      });
     });
   }
 }

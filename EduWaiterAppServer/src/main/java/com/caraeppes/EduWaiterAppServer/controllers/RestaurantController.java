@@ -40,6 +40,11 @@ public class RestaurantController {
         return new ResponseEntity<>(restaurantService.update(restaurant, id), HttpStatus.OK);
     }
 
+    @PutMapping("/addAdmin/{adminId}")
+    public ResponseEntity<Restaurant> addAdmin(@RequestBody Restaurant restaurant, @PathVariable Long adminId){
+        return new ResponseEntity<>(restaurantService.addAdmin(restaurant, adminId), HttpStatus.OK);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Boolean> delete(@PathVariable Long id){
         return new ResponseEntity<>(restaurantService.deleteById(id), HttpStatus.NOT_FOUND);

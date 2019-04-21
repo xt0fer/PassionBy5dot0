@@ -7,6 +7,7 @@ export class Restaurant {
 
   id: number;
   name: string;
+  password: string;
   menus: Menu[];
   admins: AdminAccount[];
   employees: EmployeeAccount[];

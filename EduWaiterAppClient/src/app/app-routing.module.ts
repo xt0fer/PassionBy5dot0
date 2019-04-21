@@ -8,6 +8,7 @@ import {RegisterComponent} from "./components/register/register/register.compone
 import {LoginComponent} from "./components/login/login.component";
 import {EmployeeLoginComponent} from "./components/login/employee-login/employee-login.component";
 import {AdminLoginComponent} from "./components/login/admin-login/admin-login.component";
+import {RestaurantLoginComponent} from "./components/login/restaurant-login/restaurant-login.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'login/employee', component: EmployeeLoginComponent},
   {path: 'login/admin', component: AdminLoginComponent},
+  {path: 'login/restaurant', component: RestaurantLoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'register/admin', component: AdminRegisterComponent},
   {path: 'register/restaurant', component: RestaurantRegisterComponent},

@@ -11,10 +11,13 @@ import java.util.List;
 public class AdminAccountService {
 
     private AdminAccountRepository adminAccountRepository;
+    private RestaurantService restaurantService;
 
     @Autowired
-    public AdminAccountService(AdminAccountRepository adminAccountRepository) {
+    public AdminAccountService(AdminAccountRepository adminAccountRepository,
+                               RestaurantService restaurantService) {
         this.adminAccountRepository = adminAccountRepository;
+        this.restaurantService = restaurantService;
     }
 
     public AdminAccount create(AdminAccount adminAccount){
@@ -38,6 +41,12 @@ public class AdminAccountService {
         original.setFirstName(adminAccount.getFirstName());
         original.setLastName(adminAccount.getLastName());
         original.setRestaurant(adminAccount.getRestaurant());
+        return adminAccountRepository.save(original);
+    }
+
+    public AdminAccount updateRestaurant(Long id, Long restaurantId){
+        AdminAccount original = adminAccountRepository.getOne(id);
+        original.setRestaurant(restaurantService.findById(restaurantId));
         return adminAccountRepository.save(original);
     }
 
