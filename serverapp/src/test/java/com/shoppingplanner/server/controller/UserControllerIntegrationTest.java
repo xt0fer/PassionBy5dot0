@@ -92,7 +92,7 @@ public class UserControllerIntegrationTest {
                 "\"userName\":\""+ user.getUserName() +
                 "\",\"password\":\"password\"," +
                 "\"accountType\":null," +
-                "\"account\":{\"id\":null,\"accountName\":\"pandaFamily\",\"registeredShops\":null}}";
+                "\"account\":{\"id\":null,\"accountName\":\"pandaFamily\",\"registeredShops\":null,\"shoppingItemSet\":null}}";
 
         String input = "{\n" +
                 "    \"accountName\": \"pandaFamily\",\n" +

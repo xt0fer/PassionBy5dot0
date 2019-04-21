@@ -23,6 +23,7 @@ export class LoginPage {
     private userProvider : UserProvider) {
       this.username = "";
       this.password = "";
+      userProvider.setUserLoggedIn(false);
   }
   onClick(){
     let user = new User();

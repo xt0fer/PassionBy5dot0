@@ -17,8 +17,9 @@ export class UserProvider {
     console.log('Hello UserProvider Provider');
   }
 
-  checkUserUrl = 'http://192.168.0.26:8080//user/checklogin'
-  
+   //checkUserUrl = 'http://192.168.3.101:8080//user/checklogin'
+   checkUserUrl = 'http://localhost:8080//user/checklogin'
+ 
   /** GET heroes from the server */
   checkUserLogin (user: User): Observable<User> {
         return this.http.put<User>(this.checkUserUrl, user);

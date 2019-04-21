@@ -1,5 +1,7 @@
 package com.shoppingplanner.server.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -10,6 +12,7 @@ public class ShopDetail {
     private Long id;
     private String address;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn
     private Shop shop;
@@ -39,11 +42,5 @@ public class ShopDetail {
         this.address = address;
     }
 
-//    public Set<Account> getAccounts() {
-//        return accounts;
-//    }
-//
-//    public void setAccounts(Set<Account> accounts) {
-//        this.accounts = accounts;
-//    }
+
 }

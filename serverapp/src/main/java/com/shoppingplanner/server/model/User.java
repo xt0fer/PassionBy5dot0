@@ -2,6 +2,7 @@ package com.shoppingplanner.server.model;
 
 import javax.persistence.*;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class User {
@@ -16,7 +17,26 @@ public class User {
 
     @ManyToOne
     @JoinColumn
-    private Account account;
+    private Account activeAccount;
+
+    @ManyToMany
+    private Set<Account> accounts;
+
+    public Account getActiveAccount() {
+        return activeAccount;
+    }
+
+    public void setActiveAccount(Account activeAccount) {
+        this.activeAccount = activeAccount;
+    }
+
+    public Set<Account> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(Set<Account> accounts) {
+        this.accounts = accounts;
+    }
 
     public User() {
     }
@@ -59,28 +79,12 @@ public class User {
         this.accountType = accountType;
     }
 
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof User)) return false;
-        User user = (User) o;
-        return Objects.equals(id, user.id) &&
-                Objects.equals(userName, user.userName) &&
-                Objects.equals(password, user.password) &&
-                accountType == user.accountType &&
-                Objects.equals(account, user.account);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, userName, password, accountType, account);
+    public void addToAccounts(Account account) {
+        if(!accounts.contains(account)) {
+            accounts.add(account);
+        }
+        if(activeAccount == null){
+            activeAccount = account;
+        }
     }
 }

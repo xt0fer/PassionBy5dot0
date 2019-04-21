@@ -3,6 +3,7 @@ package com.shoppingplanner.server.service;
 import com.shoppingplanner.server.ServerappApplicationTests;
 import com.shoppingplanner.server.model.Account;
 import com.shoppingplanner.server.model.User;
+import com.shoppingplanner.server.repository.AccountRepository;
 import com.shoppingplanner.server.repository.UserRepository;
 import org.junit.Assert;
 import org.junit.Before;
@@ -20,12 +21,14 @@ import java.util.Optional;
 public class UserServiceTest {
     @MockBean
     private UserRepository repository;
+    @MockBean
+    private AccountRepository accountRepository;
 
     private UserService service;
 
     @Before
     public void setup(){
-        this.service = new UserService(repository);
+        this.service = new UserService(repository, accountRepository);
     }
 
     @Test
@@ -70,9 +73,9 @@ public class UserServiceTest {
         Account account = new Account();
         account.setAccountName("pandaFamily");
 
-        User returnedUser = service.setAccount(1L, account);
+        User returnedUser = service.setActiveAccount(1L, 2L);
         Assert.assertEquals(returnedUser.getId().longValue(), 1L);
-        Assert.assertEquals(returnedUser.getAccount().getAccountName(), account.getAccountName());
+        Assert.assertEquals(returnedUser.getActiveAccount().getAccountName(), account.getAccountName());
 
 
     }

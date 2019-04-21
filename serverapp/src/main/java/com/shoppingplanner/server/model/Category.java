@@ -1,9 +1,8 @@
 package com.shoppingplanner.server.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 import java.util.Set;
 
 @Entity
@@ -15,8 +14,9 @@ public class Category {
     private String name;
     private String description;
 
-    @OneToMany(mappedBy = "category")
-    private Set<Item> items;
+
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    private Set<ShoppingItem> shoppingItems;
 
     public String getDescription() {
         return description;
@@ -38,15 +38,17 @@ public class Category {
         return name;
     }
 
+
+    public Set<ShoppingItem> getShoppingItems() {
+        return shoppingItems;
+    }
+
+    public void setShoppingItems(Set<ShoppingItem> shoppingItems) {
+        this.shoppingItems = shoppingItems;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
 
-    public Set<Item> getItems() {
-        return items;
-    }
-
-    public void setItems(Set<Item> items) {
-        this.items = items;
-    }
 }

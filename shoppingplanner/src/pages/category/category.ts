@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Category } from '../../category';
 import { CategoryProvider } from '../../providers/category/category';
+import { ShoppingItemsPage } from '../shopping-items/shopping-items';
 
 /**
  * Generated class for the CategoryPage page.
@@ -21,8 +22,9 @@ export class CategoryPage {
     private categoryProvider: CategoryProvider) {
       this.categoryProvider.getCategory()
         .subscribe(categories => {console.log("here");
-          this.categories = categories;}, error => this.logError("Error response")
-          );
+          let newCategories : Category[] = [{name: 'All' , description: "List all shopping items", id: 0}];
+          this.categories = newCategories.concat(categories);
+        }, error => this.logError("Error response"));
   }
 
   ionViewDidLoad() {
@@ -32,9 +34,8 @@ export class CategoryPage {
       console.log(message);
   }
   itemTapped(event, category) {
-    // That's right, we're pushing to ourselves!
-    // this.navCtrl.push(ListPage, {
-    //   item: item
-    // });
+    this.navCtrl.push(ShoppingItemsPage, {
+      categoryId: category.id
+    });
   }
 }

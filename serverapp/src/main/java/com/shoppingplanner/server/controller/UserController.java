@@ -31,9 +31,15 @@ public class UserController {
                 HttpStatus.BAD_REQUEST : HttpStatus.OK);
     }
 
-    @PutMapping("/user/account/{id}")
-    public ResponseEntity<User> setAccountForUser(@PathVariable Long id, @RequestBody Account account){
-        User returnedUser =  service.setAccount(id, account);
+    @PutMapping("/user/{user_id}/account/{account_id}")
+    public ResponseEntity<User> addAccountForUser(@PathVariable Long user_id, @PathVariable Long account_id){
+        User returnedUser =  service.addAccount(user_id, account_id);
+        return new ResponseEntity<>(returnedUser, (returnedUser == null) ?
+                HttpStatus.BAD_REQUEST : HttpStatus.OK);
+    }
+    @PutMapping("/user/{user_id}/account/active/{account_id}")
+    public ResponseEntity<User> setActiveAccountForUser(@PathVariable Long user_id, @PathVariable Long account_id){
+        User returnedUser =  service.setActiveAccount(user_id, account_id);
         return new ResponseEntity<>(returnedUser, (returnedUser == null) ?
                 HttpStatus.BAD_REQUEST : HttpStatus.OK);
     }

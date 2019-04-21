@@ -3,7 +3,6 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { ItemsListPage } from '../pages/items-list/items-list';
 
@@ -15,14 +14,15 @@ import { LoginPage } from '../pages/login/login';
 import { CategoryProvider } from '../providers/category/category';
 import { CategoryPage } from '../pages/category/category';
 import { ShoppingItemsProvider } from '../providers/shopping-items/shopping-items';
+import { ShoppingItemsPage } from '../pages/shopping-items/shopping-items';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
     ItemsListPage,
     LoginPage,
     CategoryPage,
+    ShoppingItemsPage,
     ListPage
   ],
   imports: [
@@ -33,10 +33,10 @@ import { ShoppingItemsProvider } from '../providers/shopping-items/shopping-item
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
     ItemsListPage,
     LoginPage,
     CategoryPage,
+    ShoppingItemsPage,
     ListPage
   ],
   providers: [
