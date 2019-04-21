@@ -12,13 +12,7 @@
 </div>
 
 <div *ngIf="currentRestaurant">
-  <h3>Your Restaurant:</h3>
-  <h4>{{currentRestaurant.name}}</h4>
-  <div>
-    Restaurant ID: {{currentRestaurant.id}}<br>
-    Employees:
-    Admins:
-  </div>
+  <app-restaurant></app-restaurant>
 </div>
 
 <div *ngIf="loggedIn">

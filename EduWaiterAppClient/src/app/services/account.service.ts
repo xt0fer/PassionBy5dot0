@@ -76,7 +76,7 @@ export class AccountService {
       map(employee => {
         if (employee != "Invalid Username!") {
           if ((employee as EmployeeAccount).password !== password) {
-            return "Invalid password!";
+            return "Invalid Password!";
           }
         }
         return employee;

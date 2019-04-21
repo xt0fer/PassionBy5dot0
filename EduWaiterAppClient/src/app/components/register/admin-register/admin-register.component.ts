@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {Router} from "@angular/router";
 import {AccountService} from "../../../services/account.service";
 import {LocalStorageService} from "ngx-webstorage";
+import {RestaurantService} from "../../../services/restaurant.service";
 
 @Component({
   selector: 'app-admin-register',
@@ -11,32 +12,94 @@ import {LocalStorageService} from "ngx-webstorage";
 })
 export class AdminRegisterComponent implements OnInit {
 
-  registerForm: FormGroup;
+  newRestaurantRegisterForm: FormGroup;
+  existingRestaurantRegisterForm: FormGroup;
   submitted: boolean;
+  newRestaurant: boolean;
+  existingRestaurant: boolean;
 
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
               private accountService: AccountService,
-              private storage: LocalStorageService) {
+              private storage: LocalStorageService,
+              private restaurantService: RestaurantService) {
   }
 
   ngOnInit() {
-    this.registerForm = this.formBuilder.group({
+    this.newRestaurantRegisterForm = this.formBuilder.group({
       firstName: '',
       lastName: '',
       username: '',
-      password: ''
+      password: '',
+      restaurantName: '',
+      restaurantPassword: ''
+    });
+
+    this.existingRestaurantRegisterForm = this.formBuilder.group({
+      firstName2: '',
+      lastName2: '',
+      username2: '',
+      password2: '',
+      restaurantId: '',
+      restaurantPassword2: ''
     });
   }
 
-  onSubmit() {
+  onSubmitNewRestaurant() {
     this.submitted = true;
-    this.accountService.registerAdmin(this.registerForm.value).subscribe(
-      account => {
-        this.storage.store("admin", account);
-      }
-    );
-    this.router.navigate(['/register/restaurant']);
+    let restaurantJson =
+      "{" +
+      "\"name\" : \"" + this.newRestaurantRegisterForm.controls.restaurantName.value + "\"," +
+      "\"password\" : \"" + this.newRestaurantRegisterForm.controls.restaurantPassword.value + "\"" +
+      "}";
+
+    this.restaurantService.registerRestaurant(JSON.parse(restaurantJson)).subscribe(restaurant => {
+      let adminJson =
+        "{" +
+        "\"firstName\" : \"" + this.newRestaurantRegisterForm.controls.firstName.value + "\"," +
+        "\"lastName\" : \"" + this.newRestaurantRegisterForm.controls.lastName.value + "\"," +
+        "\"username\" : \"" + this.newRestaurantRegisterForm.controls.username.value + "\"," +
+        "\"password\" : \"" + this.newRestaurantRegisterForm.controls.password.value + "\"," +
+        "\"restaurant\" : {\"id\" : " + restaurant.id + "}" +
+        "}";
+      this.accountService.registerAdmin(JSON.parse(adminJson)).subscribe(admin => {
+        this.restaurantService.addAdmin(restaurant, admin.id).subscribe(restaurant => {
+          this.storage.store("restaurant", restaurant);
+        });
+        this.storage.store("admin", admin);
+      });
+    });
+    this.router.navigate(['/home']);
+  }
+
+  onSubmitExistingRestaurant() {
+    this.submitted = true;
+    let adminJson =
+      "{" +
+      "\"firstName\" : \"" + this.existingRestaurantRegisterForm.controls.firstName2.value + "\"," +
+      "\"lastName\" : \"" + this.existingRestaurantRegisterForm.controls.lastName2.value + "\"," +
+      "\"username\" : \"" + this.existingRestaurantRegisterForm.controls.username2.value + "\"," +
+      "\"password\" : \"" + this.existingRestaurantRegisterForm.controls.password2.value + "\"," +
+      "\"restaurant\" : {\"id\" : " + this.existingRestaurantRegisterForm.controls.restaurantId.value + "}" +
+      "}";
+    this.accountService.registerAdmin(JSON.parse(adminJson)).subscribe(admin => {
+      this.restaurantService.findById(admin.restaurant).subscribe(restaurant => {
+        this.restaurantService.addAdmin(restaurant, admin.id);
+        this.storage.store("restaurant", restaurant);
+      });
+      this.storage.store("admin", admin);
+    });
+    this.router.navigate(['/home']);
+  }
+
+  makeNewRestaurant(): void {
+    this.newRestaurant = true;
+    this.existingRestaurant = false;
+  }
+
+  useExistingRestaurant(): void {
+    this.existingRestaurant = true;
+    this.newRestaurant = false;
   }
 }

@@ -11,13 +11,10 @@ import java.util.List;
 public class AdminAccountService {
 
     private AdminAccountRepository adminAccountRepository;
-    private RestaurantService restaurantService;
 
     @Autowired
-    public AdminAccountService(AdminAccountRepository adminAccountRepository,
-                               RestaurantService restaurantService) {
+    public AdminAccountService(AdminAccountRepository adminAccountRepository) {
         this.adminAccountRepository = adminAccountRepository;
-        this.restaurantService = restaurantService;
     }
 
     public AdminAccount create(AdminAccount adminAccount){

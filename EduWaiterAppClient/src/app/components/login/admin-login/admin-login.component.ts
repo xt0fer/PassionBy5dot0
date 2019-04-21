@@ -41,15 +41,15 @@ export class AdminLoginComponent implements OnInit {
       this.response = success;
       this.submitted = true;
       if(this.response instanceof Object){
-        this.router.navigate(["/home"]);
         this.updateRestaurant(username);
+        this.router.navigate(["/home"]);
       }
     });
   }
 
-  updateRestaurant(username: String){
+  updateRestaurant(username: string){
     this.accountService.findAdminByUsername(username).subscribe(admin => {
-      this.restaurantService.findById(admin.restaurant as number).subscribe(restaurant => {
+      this.restaurantService.findById(admin.restaurant).subscribe(restaurant => {
         this.storage.store("restaurant", restaurant);
       });
     });

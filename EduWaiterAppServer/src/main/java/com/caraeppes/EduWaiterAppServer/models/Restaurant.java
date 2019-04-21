@@ -1,6 +1,5 @@
 package com.caraeppes.EduWaiterAppServer.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -22,7 +21,6 @@ public class Restaurant {
     @OneToMany(mappedBy = "restaurant")
     private List<Menu> menus;
     @OneToMany(mappedBy = "restaurant")
-    @JsonIgnore
     private List<AdminAccount> admin;
     @OneToMany(mappedBy = "restaurant")
     private List<EmployeeAccount> employees;

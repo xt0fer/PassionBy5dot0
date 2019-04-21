@@ -1,4 +1,3 @@
-import {Restaurant} from "./restaurant";
 
 export class EmployeeAccount {
 
@@ -7,7 +6,7 @@ export class EmployeeAccount {
   lastName: string;
   username: string;
   password: string;
-  restaurant: Restaurant;
+  restaurant: number;
 
 
 }

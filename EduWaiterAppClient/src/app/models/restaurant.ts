@@ -9,7 +9,7 @@ export class Restaurant {
   name: string;
   password: string;
   menus: Menu[];
-  admins: AdminAccount[];
+  admin: AdminAccount[];
   employees: EmployeeAccount[];
   facts: Fact[];
 

@@ -9,7 +9,6 @@ import {HttpClientModule} from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {AccountService} from "./services/account.service";
 import { ShowHidePasswordModule } from 'ngx-show-hide-password';
-import { RestaurantRegisterComponent } from './components/register/restaurant-register/restaurant-register.component';
 import { EmployeeRegisterComponent } from './components/register/employee-register/employee-register.component';
 import { RegisterComponent } from './components/register/register/register.component';
 import { LoginComponent } from './components/login/login.component';
@@ -17,14 +16,13 @@ import { EmployeeLoginComponent } from './components/login/employee-login/employ
 import { AdminLoginComponent } from './components/login/admin-login/admin-login.component';
 import { AdminHomeComponent } from './components/home/admin-home/admin-home.component';
 import { EmployeeHomeComponent } from './components/home/employee-home/employee-home.component';
-import { RestaurantLoginComponent } from './components/login/restaurant-login/restaurant-login.component';
+import { RestaurantComponent } from './components/restaurant/restaurant.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AdminRegisterComponent,
-    RestaurantRegisterComponent,
     EmployeeRegisterComponent,
     RegisterComponent,
     LoginComponent,
@@ -32,7 +30,7 @@ import { RestaurantLoginComponent } from './components/login/restaurant-login/re
     AdminLoginComponent,
     AdminHomeComponent,
     EmployeeHomeComponent,
-    RestaurantLoginComponent
+    RestaurantComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,15 @@
+<body>
+<h2>Your Restaurant</h2>
+<h4>{{currentRestaurant.name}}</h4>
+<ul>Employees:
+  <li *ngFor="let employee of currentRestaurant.employees">
+    <body>{{employee.firstName}} {{employee.lastName}}</body>
+  </li>
+</ul>
+<ul>Admins:
+  <li *ngFor="let admin of currentRestaurant.admin">
+    <body>{{admin.firstName}} {{admin.lastName}}</body>
+  </li>
+</ul>
+
+</body>

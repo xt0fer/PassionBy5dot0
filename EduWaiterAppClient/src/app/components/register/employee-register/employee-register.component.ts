@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
 import {AccountService} from "../../../services/account.service";
@@ -19,7 +19,8 @@ export class EmployeeRegisterComponent implements OnInit {
               private router: Router,
               private accountService: AccountService,
               private storage: LocalStorageService,
-              private restaurantService: RestaurantService) { }
+              private restaurantService: RestaurantService) {
+  }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -40,11 +41,10 @@ export class EmployeeRegisterComponent implements OnInit {
       "\"lastName\" : \"" + this.registerForm.controls.lastName.value + "\"," +
       "\"username\" : \"" + this.registerForm.controls.username.value + "\"," +
       "\"password\" : \"" + this.registerForm.controls.password.value + "\"," +
-      "\"restaurant\" : {\"id\" : " + this.registerForm.controls.restaurantId.value +"}" +
+      "\"restaurant\" : {\"id\" : " + this.registerForm.controls.restaurantId.value + "}" +
       "}";
-    this.accountService.registerEmployee(JSON.parse(json)).subscribe(
-      account => {
-        this.restaurantService.findById(this.registerForm.controls.restaurantId.value).subscribe( restaurant => {
+    this.accountService.registerEmployee(JSON.parse(json)).subscribe(account => {
+        this.restaurantService.findById(account.restaurant).subscribe(restaurant => {
           this.restaurantService.addEmployee(restaurant, account.id);
           this.storage.store("restaurant", restaurant);
         });

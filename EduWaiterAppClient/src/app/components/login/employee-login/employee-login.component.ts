@@ -42,9 +42,9 @@ export class EmployeeLoginComponent implements OnInit {
     });
   }
 
-  updateRestaurant(username: String){
+  updateRestaurant(username: string){
     this.accountService.findEmployeeByUsername(username).subscribe(employee => {
-      this.restaurantService.findById(employee.restaurant as number).subscribe(restaurant => {
+      this.restaurantService.findById(employee.restaurant).subscribe(restaurant => {
         this.storage.store("restaurant", restaurant);
       });
     });
