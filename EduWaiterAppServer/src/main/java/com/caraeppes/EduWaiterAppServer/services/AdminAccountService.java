@@ -44,12 +44,6 @@ public class AdminAccountService {
         return adminAccountRepository.save(original);
     }
 
-    public AdminAccount updateRestaurant(Long id, Long restaurantId){
-        AdminAccount original = adminAccountRepository.getOne(id);
-        original.setRestaurant(restaurantService.findById(restaurantId));
-        return adminAccountRepository.save(original);
-    }
-
     public Boolean deleteById(Long id){
         adminAccountRepository.deleteById(id);
         return true;

@@ -5,8 +5,6 @@ import {Observable} from "rxjs";
 import {map} from 'rxjs/operators';
 import {EmployeeAccount} from "../models/employee-account";
 import {LocalStorageService} from "ngx-webstorage";
-import {Restaurant} from "../models/restaurant";
-import {RestaurantService} from "./restaurant.service";
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -21,8 +19,7 @@ export class AccountService {
   private url = "/api/accounts";
 
   constructor(private http: HttpClient,
-              private storage: LocalStorageService,
-              private restaurantService: RestaurantService) {
+              private storage: LocalStorageService) {
   }
 
   registerAdmin(adminAccount: AdminAccount): Observable<AdminAccount> {
@@ -91,15 +88,6 @@ export class AccountService {
         return employee;
       })
     );
-  }
-
-  updateAdminRestaurant(id: number, restaurantId: number): Observable<AdminAccount> {
-    let restaurant: Restaurant;
-    this.restaurantService.findById(restaurantId).subscribe(result=> {
-      restaurant = result;
-    });
-    return this.http.put(`${this.url}/admin/${id}/updateRestaurant?restaurantId=${restaurantId}`,
-      restaurant, httpOptions);
   }
 
   logout() {

@@ -4,8 +4,6 @@ import {Router} from "@angular/router";
 import {AccountService} from "../../../services/account.service";
 import {RestaurantService} from "../../../services/restaurant.service";
 import {LocalStorageService} from "ngx-webstorage";
-import {AdminAccount} from "../../../models/admin-account";
-import {Restaurant} from "../../../models/restaurant";
 
 @Component({
   selector: 'app-restaurant-login',
@@ -21,8 +19,7 @@ export class RestaurantLoginComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private router: Router,
               private restaurantService: RestaurantService,
-              private storage: LocalStorageService,
-              private accountService: AccountService) {
+              private storage: LocalStorageService) {
   }
 
   ngOnInit() {

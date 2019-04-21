@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {AdminAccount} from "../models/admin-account";
 import {Observable} from "rxjs";
 import {Restaurant} from "../models/restaurant";
 import {map} from "rxjs/operators";
@@ -57,5 +56,9 @@ export class RestaurantService {
 
   addAdmin(restaurant: Restaurant, adminId: number): Observable<Restaurant> {
     return this.http.put(`${this.url}/addAdmin/${adminId}`, restaurant, httpOptions);
+  }
+
+  addEmployee(restaurant: Restaurant, employeeId: number): Observable<Restaurant> {
+    return this.http.put(`${this.url}/addEmployee/${employeeId}`, restaurant, httpOptions);
   }
 }

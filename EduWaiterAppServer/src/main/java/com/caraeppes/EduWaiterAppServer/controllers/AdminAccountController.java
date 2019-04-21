@@ -45,11 +45,6 @@ public class AdminAccountController {
         return new ResponseEntity<>(adminAccountService.update(adminAccount, id), HttpStatus.OK);
     }
 
-    @PutMapping("{id}/updateRestaurant")
-    private ResponseEntity<AdminAccount> updateRestaurant(@PathVariable Long id, @RequestParam Long restaurantId){
-        return new ResponseEntity<>(adminAccountService.updateRestaurant(id, restaurantId), HttpStatus.OK);
-    }
-
     @DeleteMapping("/{id}")
     private ResponseEntity<Boolean> deleteById(@PathVariable Long id) {
         return new ResponseEntity<>(adminAccountService.deleteById(id), HttpStatus.NOT_FOUND);

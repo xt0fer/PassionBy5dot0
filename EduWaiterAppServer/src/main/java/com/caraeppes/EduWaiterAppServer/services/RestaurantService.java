@@ -1,8 +1,10 @@
 package com.caraeppes.EduWaiterAppServer.services;
 
 import com.caraeppes.EduWaiterAppServer.models.AdminAccount;
+import com.caraeppes.EduWaiterAppServer.models.EmployeeAccount;
 import com.caraeppes.EduWaiterAppServer.models.Restaurant;
 import com.caraeppes.EduWaiterAppServer.repositories.AdminAccountRepository;
+import com.caraeppes.EduWaiterAppServer.repositories.EmployeeAccountRepository;
 import com.caraeppes.EduWaiterAppServer.repositories.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,12 +16,15 @@ public class RestaurantService {
 
     private RestaurantRepository restaurantRepository;
     private AdminAccountRepository adminAccountRepository;
+    private EmployeeAccountRepository employeeAccountRepository;
 
     @Autowired
     public RestaurantService(RestaurantRepository restaurantRepository,
-                             AdminAccountRepository adminAccountRepository) {
+                             AdminAccountRepository adminAccountRepository,
+                             EmployeeAccountRepository employeeAccountRepository) {
         this.restaurantRepository = restaurantRepository;
         this.adminAccountRepository = adminAccountRepository;
+        this.employeeAccountRepository = employeeAccountRepository;
 
     }
 
@@ -50,6 +55,14 @@ public class RestaurantService {
         restaurant.getAdmin().add(admin);
         admin.setRestaurant(restaurant);
         adminAccountRepository.save(admin);
+        return restaurantRepository.save(restaurant);
+    }
+
+    public Restaurant addEmployee(Restaurant restaurant, Long employeeId){
+        EmployeeAccount employeeAccount = employeeAccountRepository.getOne(employeeId);
+        restaurant.getEmployees().add(employeeAccount);
+        employeeAccount.setRestaurant(restaurant);
+        employeeAccountRepository.save(employeeAccount);
         return restaurantRepository.save(restaurant);
     }
 

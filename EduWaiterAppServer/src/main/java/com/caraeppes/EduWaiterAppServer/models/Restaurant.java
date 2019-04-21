@@ -30,7 +30,10 @@ public class Restaurant {
     private List<Fact> facts;
 
     public Restaurant() {
+        menus = new ArrayList<>();
         admin = new ArrayList<>();
+        employees = new ArrayList<>();
+        facts = new ArrayList<>();
     }
 
     public Long getId() {

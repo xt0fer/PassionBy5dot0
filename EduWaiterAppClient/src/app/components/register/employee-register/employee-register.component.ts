@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
 import {AccountService} from "../../../services/account.service";
 import {LocalStorageService} from "ngx-webstorage";
+import {RestaurantService} from "../../../services/restaurant.service";
 
 @Component({
   selector: 'app-employee-register',
@@ -17,7 +18,8 @@ export class EmployeeRegisterComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private router: Router,
               private accountService: AccountService,
-              private storage: LocalStorageService) { }
+              private storage: LocalStorageService,
+              private restaurantService: RestaurantService) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -42,10 +44,13 @@ export class EmployeeRegisterComponent implements OnInit {
       "}";
     this.accountService.registerEmployee(JSON.parse(json)).subscribe(
       account => {
+        this.restaurantService.findById(this.registerForm.controls.restaurantId.value).subscribe( restaurant => {
+          this.restaurantService.addEmployee(restaurant, account.id);
+          this.storage.store("restaurant", restaurant);
+        });
         this.storage.store("employee", account);
       }
     );
     this.router.navigate(['/home']);
   }
-
 }
