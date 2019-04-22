@@ -25,6 +25,7 @@ public class Account {
     @ManyToMany(mappedBy = "accounts")
     private Set<User> users;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "account")
     private Set<Account_ShoppingItem> shoppingItems;
 

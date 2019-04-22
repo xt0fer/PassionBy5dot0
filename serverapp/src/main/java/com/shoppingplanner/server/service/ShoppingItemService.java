@@ -12,6 +12,9 @@ public class ShoppingItemService {
     ShoppingItemRepository repository;
 
     public Iterable<ShoppingItem> getAllShoppingItems() {
-        return repository.findAllByNameNotIn("miscellaneous", "other");
+        return repository.findAllByNameNotIn("Miscellaneous", "Other");
+    }
+    public ShoppingItem getShoppingItem(Long shoppingId){
+        return repository.findById(shoppingId).get();
     }
 }

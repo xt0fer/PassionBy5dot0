@@ -39,6 +39,7 @@ export class LoginPage {
   doUserLogin(user : User){
     if(user != null){
       this.userProvider.setUserLoggedIn(true);
+      this.userProvider.setUser(user);
       this.navCtrl.setRoot(ItemsListPage)
     }
     else

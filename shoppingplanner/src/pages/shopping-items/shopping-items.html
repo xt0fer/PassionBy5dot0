@@ -1,0 +1,30 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>ShoppingItems</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content  class ="myview" >
+  <ion-list>
+    <button [class.highlight]="selectedIdx == i"  ion-item *ngFor="let shoppingItem of shoppingItems; let i = index;" (click)="itemTapped($event, i)">
+      {{shoppingItem.name}}
+      <div class="item-note" item-end>
+        +
+      </div>
+    </button>
+  </ion-list>
+  <div  *ngIf="show" class ="selected">
+      <div class = "details" >
+          <div class = "top-spacing">
+            <label>Comment</label>
+              <input [(ngModel)]= "note"  placeholder="Enter a note" event-focus-id="noteFocus[i]"/>
+              <div class = "top-spacing">
+                  <label>Quantity</label>
+                  <input [(ngModel)]= "quantity" placeholder="Enter the quantity"/>
+              </div>
+              <button ion-button class = "top-spacing" (click)="onAddItem()">Add Item</button>
+              <button ion-button class = "top-spacing" (click)="onCancelAddItem()">Cancel</button>
+            </div>
+  </div>
+</div>

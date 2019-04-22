@@ -14,5 +14,20 @@
 </ion-header>
 
 <ion-content class ="myview" padding>
-
+  <ul class="shoppingItem">
+     <li *ngFor="let item of shoppingItems; let i = index;" >
+      <!--routerLink="/detail/{{item.id}}"> -->
+      <div class="badge">
+        <div class="item-detail">
+          <div>
+          <label>{{item.shoppingItem.name}}</label></div> 
+          <div>
+          <label>{{item.note}}</label> </div>
+          </div>
+        <button ion-button class="col-3 bg-success"  size="small" (click) = "onDeleteItem(item, i)" item-end >
+            Remove
+        </button>
+      </div>
+    </li> 
+  </ul>
 </ion-content>

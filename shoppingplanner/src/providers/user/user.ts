@@ -13,6 +13,7 @@ import { User } from '../../user';
 @Injectable()
 export class UserProvider {
   loggedIn = false; 
+  loggedInUser :User;
   constructor(public http: HttpClient) {
     console.log('Hello UserProvider Provider');
   }
@@ -26,6 +27,15 @@ export class UserProvider {
   }
   setUserLoggedIn(logInSuccessful : boolean){
     this.loggedIn = logInSuccessful;
+    if(logInSuccessful == false){
+      this.loggedInUser = null;
+    }
+  }
+  setUser(user : User){
+    this.loggedInUser = user;
+  }
+  getLoggedInUser(){
+    return this.loggedInUser;
   }
   isUserLoggedIn(){
     return this.loggedIn;

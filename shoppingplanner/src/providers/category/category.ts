@@ -17,7 +17,6 @@ export class CategoryProvider {
   //getCategoryUrl = 'http://192.168.3.101:8080/category/'
   getCategoryUrl = 'http://localhost:8080/category/'
   
-  /** GET heroes from the server */
   getCategory (): Observable<Category[]> {
     console.log("trying to get categories");
         return this.http.get<Category[]>(this.getCategoryUrl);

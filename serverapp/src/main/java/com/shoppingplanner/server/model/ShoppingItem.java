@@ -19,6 +19,7 @@ public class ShoppingItem {
     @JoinColumn
     private Category category;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "shoppingItem")
     Set<Account_ShoppingItem> account_shoppingItems;
 
