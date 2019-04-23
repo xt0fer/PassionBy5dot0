@@ -1,3 +1,4 @@
+
 page-items-list {
     .myview {
         background-image: url('../../assets/imgs/g2TpEe.jpg');
@@ -45,7 +46,7 @@ page-items-list {
       .shoppingItem .badge {
         margin-left: 30px;
         display:grid;
-        grid-template-columns: auto auto;
+        grid-template-columns: auto fit-content(10%);
         text-align: left;
         font-size: medium;
         color: white;
@@ -63,6 +64,30 @@ page-items-list {
       }
       .delete{
         background: rgb(206, 24, 24);
+        font-size: large;
         color: white;
+        width: 30px;
+        text-align: right;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+      }
+      .edit{
+        background: rgb(241, 245, 247);
+        background-image: url("../../assets/imgs/edit.png");
+        background-position-y: center;
+        background-size: 30px;
+        background-repeat:no-repeat;
+        width: 30px;
+        text-align: right;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+      }
+      .edit:hover{
+        background-color: rgb(164, 235, 174) !important;
+      }
+      .delete:hover{
+        background-color: rgb(231, 145, 139) !important;
+      }
+
+      .button-list{
+        display: inline;
       }
 }

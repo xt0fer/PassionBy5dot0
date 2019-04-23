@@ -9,7 +9,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Items List</ion-title>
+    <ion-title>Our Shopping List</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -24,9 +24,13 @@
           <div>
           <label>{{item.note}}</label> </div>
           </div>
-        <button ion-button class="col-3 bg-success"  size="small" (click) = "onDeleteItem(item, i)" item-end >
-            Remove
+          <div class ="button-list" item-end>
+        <button ion-button class="edit"  size="small" (click) = "onEdit(item)"  >
         </button>
+        <button ion-button class="delete"  size="small" (click) = "onDeleteItem(item, i)"  >
+            -
+        </button>
+      </div>
       </div>
     </li> 
   </ul>
