@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {AccountService} from "../../../services/account.service";
 import {LocalStorageService} from "ngx-webstorage";
 import {RestaurantService} from "../../../services/restaurant.service";
+import {Restaurant} from "../../../models/restaurant";
 
 @Component({
   selector: 'app-employee-register',
@@ -41,16 +42,18 @@ export class EmployeeRegisterComponent implements OnInit {
       "\"lastName\" : \"" + this.registerForm.controls.lastName.value + "\"," +
       "\"username\" : \"" + this.registerForm.controls.username.value + "\"," +
       "\"password\" : \"" + this.registerForm.controls.password.value + "\"," +
-      "\"restaurant\" : {\"id\" : " + this.registerForm.controls.restaurantId.value + "}" +
+      "\"restaurant\" : null" +
       "}";
+    let restaurantId: number = this.registerForm.controls.restaurantId.value;
+    console.log(restaurantId);
     this.accountService.registerEmployee(JSON.parse(json)).subscribe(account => {
-        this.restaurantService.findById(account.restaurant).subscribe(restaurant => {
-          this.restaurantService.addEmployee(restaurant, account.id);
-          this.storage.store("restaurant", restaurant);
-        });
+      this.accountService.employeeUpdateRestaurant(restaurantId, account).subscribe(account => {
+        this.storage.store("restaurant", account.restaurant);
         this.storage.store("employee", account);
-      }
-    );
-    this.router.navigate(['/home']);
+        this
+          .router
+          .navigate(['/home']);
+      });
+    });
   }
 }

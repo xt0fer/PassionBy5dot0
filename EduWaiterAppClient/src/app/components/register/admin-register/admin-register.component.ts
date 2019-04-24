@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {AccountService} from "../../../services/account.service";
 import {LocalStorageService} from "ngx-webstorage";
 import {RestaurantService} from "../../../services/restaurant.service";
+import {Restaurant} from "../../../models/restaurant";
 
 @Component({
   selector: 'app-admin-register',
@@ -53,7 +54,6 @@ export class AdminRegisterComponent implements OnInit {
       "\"name\" : \"" + this.newRestaurantRegisterForm.controls.restaurantName.value + "\"," +
       "\"password\" : \"" + this.newRestaurantRegisterForm.controls.restaurantPassword.value + "\"" +
       "}";
-
     this.restaurantService.registerRestaurant(JSON.parse(restaurantJson)).subscribe(restaurant => {
       let adminJson =
         "{" +
@@ -61,13 +61,13 @@ export class AdminRegisterComponent implements OnInit {
         "\"lastName\" : \"" + this.newRestaurantRegisterForm.controls.lastName.value + "\"," +
         "\"username\" : \"" + this.newRestaurantRegisterForm.controls.username.value + "\"," +
         "\"password\" : \"" + this.newRestaurantRegisterForm.controls.password.value + "\"," +
-        "\"restaurant\" : {\"id\" : " + restaurant.id + "}" +
+        "\"restaurant\" : null" +
         "}";
       this.accountService.registerAdmin(JSON.parse(adminJson)).subscribe(admin => {
         this.restaurantService.addAdmin(restaurant, admin.id).subscribe(restaurant => {
-          this.storage.store("restaurant", restaurant);
+            this.storage.store("restaurant", restaurant);
+            this.storage.store("admin", admin);
         });
-        this.storage.store("admin", admin);
       });
     });
     this.router.navigate(['/home']);
@@ -81,16 +81,16 @@ export class AdminRegisterComponent implements OnInit {
       "\"lastName\" : \"" + this.existingRestaurantRegisterForm.controls.lastName2.value + "\"," +
       "\"username\" : \"" + this.existingRestaurantRegisterForm.controls.username2.value + "\"," +
       "\"password\" : \"" + this.existingRestaurantRegisterForm.controls.password2.value + "\"," +
-      "\"restaurant\" : {\"id\" : " + this.existingRestaurantRegisterForm.controls.restaurantId.value + "}" +
+      "\"restaurant\" : null" +
       "}";
+    let restaurantId: number = this.existingRestaurantRegisterForm.controls.restaurantId.value;
     this.accountService.registerAdmin(JSON.parse(adminJson)).subscribe(admin => {
-      this.restaurantService.findById(admin.restaurant).subscribe(restaurant => {
-        this.restaurantService.addAdmin(restaurant, admin.id);
-        this.storage.store("restaurant", restaurant);
-      });
-      this.storage.store("admin", admin);
-    });
-    this.router.navigate(['/home']);
+        this.accountService.adminUpdateRestaurant(restaurantId, admin).subscribe(admin => {
+            this.storage.store("restaurant", admin.restaurant);
+            this.storage.store("admin", admin);
+          this.router.navigate(['/home']);
+          });
+        });
   }
 
   makeNewRestaurant(): void {

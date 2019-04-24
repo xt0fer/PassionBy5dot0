@@ -3,9 +3,6 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
 import {AccountService} from "../../../services/account.service";
 import {LocalStorageService} from "ngx-webstorage";
-import {Local} from "protractor/built/driverProviders";
-import {AdminAccount} from "../../../models/admin-account";
-import {Restaurant} from "../../../models/restaurant";
 import {RestaurantService} from "../../../services/restaurant.service";
 
 @Component({
@@ -40,18 +37,16 @@ export class AdminLoginComponent implements OnInit {
     this.accountService.loginAdmin(username, password).subscribe(success => {
       this.response = success;
       this.submitted = true;
-      if(this.response instanceof Object){
+      if (this.response instanceof Object) {
         this.updateRestaurant(username);
         this.router.navigate(["/home"]);
       }
     });
   }
 
-  updateRestaurant(username: string){
+  updateRestaurant(username: string) {
     this.accountService.findAdminByUsername(username).subscribe(admin => {
-      this.restaurantService.findById(admin.restaurant).subscribe(restaurant => {
-        this.storage.store("restaurant", restaurant);
-      });
+      this.storage.store("restaurant", admin.restaurant);
     });
   }
 }

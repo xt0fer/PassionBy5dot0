@@ -11,6 +11,47 @@
   text-transform: none;
 }
 
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+
+.wrapper {
+  width: 100%;
+  min-width: 1000px;
+}
+
+.header {
+  text-align: center;
+  font-size: 50px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  letter-spacing: 1.4px;
+  word-spacing: 3.2px;
+  color: #7D2121;
+  font-weight: 700;
+  text-decoration: none;
+  font-style: italic;
+  font-variant: normal;
+  text-transform: none;
+}
+
 body {
   font-family: "Trebuchet MS", Helvetica, sans-serif;
   font-size: 14px;
@@ -20,6 +61,20 @@ body {
   font-weight: 400;
   text-decoration: none;
   font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+}
+
+h1 {
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  font-size: 34px;
+  letter-spacing: 0.8px;
+  word-spacing: 1.2px;
+  color: #7D2121;
+  font-weight: 700;
+  text-decoration: none;
+  font-style: italic;
   font-variant: normal;
   text-transform: none;
 }
@@ -37,17 +92,61 @@ h2 {
   text-transform: none;
 }
 
+
+
+nav ul li {
+  float: left;
+  width: 20%;
+}
+
+nav {
+  display: inline-block;
+  font-size: 100%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  float: left;
+  margin: 0 0 1em 0;
+  padding: 0;
+  background-color: #35437D;;
+  border-bottom: 1px solid #ccc;
+}
+
+
+nav ul {
+  list-style: none;
+  width: 90%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+#nav li {
+  float: left;
+}
+
+#nav li a {
+  display: block;
+  text-decoration: none;
+  font-weight: bold;
+  color: #069;
+  border-right: 1px solid #ccc;
+}
+
+
+
+
 nav a {
-  font-family:"Trebuchet MS", Helvetica, sans-serif;
-  font-size: 20px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  font-size: 18px;
   letter-spacing: 0.4px;
-  word-spacing: 2.8px;
+  word-spacing: 2px;
   color: white;
   font-weight: 700;
   font-style: normal;
   font-variant: small-caps;
   text-transform: capitalize;
-  padding: 10px 50px;
+  padding-top: 1%;
+  padding-bottom: 1%;
   text-decoration: none;
   margin-top: 1px;
   display: inline-block;
@@ -56,9 +155,28 @@ nav a {
 }
 
 nav a:hover {
-  color: #35437D;
-  background-color: white;
+  color: #7D2121;
+  background-color: #35437D;
 }
+
 nav a.active {
   color: white;
+}
+
+.content {
+  margin-top: 5%;
+  position: relative;
+  background: whitesmoke;
+}
+
+.column {
+  float: left;
+}
+
+.left, .right {
+  width: 25%;
+}
+
+.middle {
+  width: 50%;
 }

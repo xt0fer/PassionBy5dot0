@@ -1,3 +1,4 @@
+import {Restaurant} from "./restaurant";
 
 export class AdminAccount {
 
@@ -6,7 +7,7 @@ export class AdminAccount {
   lastName: string;
   username: string;
   password: string;
-  restaurant: number;
+  restaurant: Restaurant;
 
 
 }

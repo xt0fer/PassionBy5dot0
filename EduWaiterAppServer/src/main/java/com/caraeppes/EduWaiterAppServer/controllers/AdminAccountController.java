@@ -1,6 +1,7 @@
 package com.caraeppes.EduWaiterAppServer.controllers;
 
 import com.caraeppes.EduWaiterAppServer.models.AdminAccount;
+import com.caraeppes.EduWaiterAppServer.models.Restaurant;
 import com.caraeppes.EduWaiterAppServer.services.AdminAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -43,6 +44,11 @@ public class AdminAccountController {
     @PutMapping("/update/{id}")
     private ResponseEntity<AdminAccount> update(@RequestBody AdminAccount adminAccount, @PathVariable Long id) {
         return new ResponseEntity<>(adminAccountService.update(adminAccount, id), HttpStatus.OK);
+    }
+
+    @PutMapping("{id}/updateRestaurant")
+    private ResponseEntity<AdminAccount> updateRestaurant(@RequestParam Long restaurantId, @PathVariable Long id){
+        return new ResponseEntity<>(adminAccountService.updateRestaurant(restaurantId, id), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

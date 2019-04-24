@@ -1,18 +1,9 @@
-<div *ngIf="!loggedIn">
+<div class="content">
+  <div *ngIf="currentAdmin">
+    <app-admin-home></app-admin-home>
+  </div>
 
-</div>
-
-
-
-
-<div *ngIf="currentAdmin">
-  <app-admin-home></app-admin-home>
-</div>
-
-<div *ngIf="currentEmployee">
-  <app-employee-home></app-employee-home>
-</div>
-
-<div *ngIf="currentRestaurant">
-  <app-restaurant></app-restaurant>
+  <div *ngIf="currentEmployee">
+    <app-employee-home></app-employee-home>
+  </div>
 </div>

@@ -5,6 +5,7 @@ import {Observable} from "rxjs";
 import {map} from 'rxjs/operators';
 import {EmployeeAccount} from "../models/employee-account";
 import {LocalStorageService} from "ngx-webstorage";
+import {Restaurant} from "../models/restaurant";
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -87,13 +88,22 @@ export class AccountService {
         }
         return employee;
       })
-    );
+    )
   }
 
   logout() {
     this.storage.store("admin", null);
     this.storage.store("employee", null);
     this.storage.store("restaurant", null);
+  }
+
+  employeeUpdateRestaurant(restaurantId: number,  account: EmployeeAccount): Observable<EmployeeAccount> {
+    return this.http.put<EmployeeAccount>(`${this.url}/employees/${account.id}/updateRestaurant?restaurantId=${restaurantId}`, account, httpOptions);
+  }
+
+
+  adminUpdateRestaurant(restaurantId: number,  account: AdminAccount): Observable<AdminAccount> {
+    return this.http.put<AdminAccount>(`${this.url}/admin/${account.id}/updateRestaurant?restaurantId=${restaurantId}`, account, httpOptions);
   }
 
 }

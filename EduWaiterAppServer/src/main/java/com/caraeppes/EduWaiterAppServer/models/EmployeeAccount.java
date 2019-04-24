@@ -25,7 +25,6 @@ public class EmployeeAccount {
     private String password;
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = Restaurant.class)
     @JoinColumn(name="restaurant_id")
-    @JsonRawValue()
     private Restaurant restaurant;
 
     public Long getId() {

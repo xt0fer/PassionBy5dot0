@@ -1,6 +1,11 @@
 package com.caraeppes.EduWaiterAppServer.models;
 
+import com.caraeppes.EduWaiterAppServer.utilities.AdminSerializer;
+import com.caraeppes.EduWaiterAppServer.utilities.EmployeeSerializer;
+import com.caraeppes.EduWaiterAppServer.utilities.IngredientSerializer;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +26,10 @@ public class Restaurant {
     @OneToMany(mappedBy = "restaurant")
     private List<Menu> menus;
     @OneToMany(mappedBy = "restaurant")
+    @JsonSerialize(using = AdminSerializer.class)
     private List<AdminAccount> admin;
     @OneToMany(mappedBy = "restaurant")
+    @JsonSerialize(using = EmployeeSerializer.class)
     private List<EmployeeAccount> employees;
     @OneToMany(mappedBy = "restaurant")
     private List<Fact> facts;
@@ -90,8 +97,4 @@ public class Restaurant {
         this.facts = facts;
     }
 
-    @Override
-    public String toString() {
-        return id.toString();
-    }
 }

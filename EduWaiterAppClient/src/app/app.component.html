@@ -1,17 +1,26 @@
-<div id="font"><h1>{{title}}</h1></div>
-
-<nav>
-  <div *ngIf="!loggedIn">
-    <a routerLink="/home">Home</a>
-    <a routerLink="/register">Register</a>
-    <a routerLink="/login">Login</a>
+<html>
+<div class="wrapper">
+  <div class="header">
+{{title}}
   </div>
-  <div *ngIf="loggedIn">
-    <a routerLink="/home">Home</a>
-    <a routerLink="home" (click)="logout()">Logout</a>
-  </div>
-</nav>
-
-<body>
-<router-outlet></router-outlet>
-</body>
+  <nav>
+    <div *ngIf="!loggedIn">
+      <ul>
+        <li><a routerLink="/home">Home</a></li>
+        <li><a routerLink="/register">Register</a></li>
+        <li><a routerLink="/login">Login</a></li>
+      </ul>
+    </div>
+    <div *ngIf="loggedIn">
+      <ul>
+        <li><a routerLink="/home">Home</a></li>
+        <li><a routerLink="/myRestaurant">My Restaurant</a> </li>
+        <li><a routerLink="home" (click)="logout()">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+  <body>
+  <router-outlet></router-outlet>
+  </body>
+</div>
+</html>

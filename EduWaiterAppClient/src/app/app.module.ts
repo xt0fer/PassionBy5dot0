@@ -17,6 +17,7 @@ import { AdminLoginComponent } from './components/login/admin-login/admin-login.
 import { AdminHomeComponent } from './components/home/admin-home/admin-home.component';
 import { EmployeeHomeComponent } from './components/home/employee-home/employee-home.component';
 import { RestaurantComponent } from './components/restaurant/restaurant.component';
+import { MenuComponent } from './components/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { RestaurantComponent } from './components/restaurant/restaurant.componen
     AdminLoginComponent,
     AdminHomeComponent,
     EmployeeHomeComponent,
-    RestaurantComponent
+    RestaurantComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,

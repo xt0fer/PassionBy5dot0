@@ -12,6 +12,7 @@ import java.util.List;
 public class AdminAccount  {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+
     @Column(name = "account_id")
     private Long id;
     @Column(name = "first_name")
@@ -24,7 +25,6 @@ public class AdminAccount  {
     private String password;
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = Restaurant.class)
     @JoinColumn(name="restaurant_id")
-    @JsonRawValue()
     private Restaurant restaurant;
 
     public Long getId() {
