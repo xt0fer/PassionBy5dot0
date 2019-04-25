@@ -1,23 +1,27 @@
-<body>
-<div class="row">
-  <div class="left"></div>
-  <div class="middle">
-    <h1>My Restaurant</h1>
-    <h2>{{currentRestaurant.name}}</h2>
-    <br>
-    Restaurant ID: {{currentRestaurant.id}}
-    <br><br>
-    <ul>Employees:
-      <li *ngFor="let employee of currentRestaurant.employees">
-        <body>{{employee.firstName}} {{employee.lastName}}</body>
-      </li>
-    </ul>
-    <br>
-    <ul>Admins:
-      <li *ngFor="let admin of currentRestaurant.admin">
-        <body>{{admin.firstName}} {{admin.lastName}}</body>
-      </li>
-    </ul>
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-6">
+
+      <h1>My Restaurant</h1>
+      <h2>{{currentRestaurant.name}}</h2>
+      <br>
+      Restaurant ID: {{currentRestaurant.id}}
+      <br><br>
+      <ul>Employees:
+        <li *ngFor="let employee of currentRestaurant.employees">
+          <body>{{employee.firstName}} {{employee.lastName}}</body>
+        </li>
+      </ul>
+      <br>
+      <ul>Admins:
+        <li *ngFor="let admin of currentRestaurant.admin">
+          <body>{{admin.firstName}} {{admin.lastName}}</body>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <app-menu></app-menu>
+    </div>
   </div>
 </div>
-</body>

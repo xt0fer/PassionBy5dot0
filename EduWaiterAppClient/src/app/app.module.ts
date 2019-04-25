@@ -18,6 +18,7 @@ import { AdminHomeComponent } from './components/home/admin-home/admin-home.comp
 import { EmployeeHomeComponent } from './components/home/employee-home/employee-home.component';
 import { RestaurantComponent } from './components/restaurant/restaurant.component';
 import { MenuComponent } from './components/menu/menu.component';
+import {MenuService} from "./services/menu.service";
 
 @NgModule({
   declarations: [
@@ -43,7 +44,7 @@ import { MenuComponent } from './components/menu/menu.component';
     ShowHidePasswordModule,
     NgxWebstorageModule.forRoot()
   ],
-  providers: [],
+  providers: [MenuService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -23,7 +23,7 @@ public class MenuItemSerializer extends StdSerializer<List<MenuItem>> {
 
     @Override
     public void serialize(List<MenuItem> menuItems, JsonGenerator generator,
-            SerializerProvider provider) throws IOException, JsonProcessingException {
+            SerializerProvider provider) throws IOException{
 
         List<MenuItem> serializedMenuItems = new ArrayList<>();
         for (MenuItem m : menuItems) {

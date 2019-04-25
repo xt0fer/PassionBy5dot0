@@ -3,6 +3,7 @@ package com.caraeppes.EduWaiterAppServer.models;
 import com.caraeppes.EduWaiterAppServer.utilities.AdminSerializer;
 import com.caraeppes.EduWaiterAppServer.utilities.EmployeeSerializer;
 import com.caraeppes.EduWaiterAppServer.utilities.IngredientSerializer;
+import com.caraeppes.EduWaiterAppServer.utilities.MenuSerializer;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
@@ -24,6 +25,7 @@ public class Restaurant {
     @Column(name = "password")
     private String password;
     @OneToMany(mappedBy = "restaurant")
+    @JsonSerialize(using = MenuSerializer.class)
     private List<Menu> menus;
     @OneToMany(mappedBy = "restaurant")
     @JsonSerialize(using = AdminSerializer.class)

@@ -30,7 +30,6 @@ public class Menu {
     private List<MenuItem> menuItems;
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="restaurant_id")
-    @JsonRawValue()
     private Restaurant restaurant;
 
     public Long getId() {

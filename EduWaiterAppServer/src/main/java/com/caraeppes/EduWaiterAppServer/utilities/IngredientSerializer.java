@@ -23,7 +23,7 @@ public class IngredientSerializer extends StdSerializer<List<Ingredient>> {
 
     @Override
     public void serialize(List<Ingredient> ingredients, JsonGenerator generator,
-                          SerializerProvider provider) throws IOException, JsonProcessingException {
+                          SerializerProvider provider) throws IOException{
 
         List<Ingredient> serializedIngredients = new ArrayList<>();
         for (Ingredient i : ingredients) {

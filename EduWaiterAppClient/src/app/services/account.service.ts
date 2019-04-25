@@ -5,7 +5,6 @@ import {Observable} from "rxjs";
 import {map} from 'rxjs/operators';
 import {EmployeeAccount} from "../models/employee-account";
 import {LocalStorageService} from "ngx-webstorage";
-import {Restaurant} from "../models/restaurant";
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})

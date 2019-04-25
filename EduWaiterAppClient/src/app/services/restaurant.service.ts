@@ -61,4 +61,8 @@ export class RestaurantService {
   addEmployee(restaurant: Restaurant, employeeId: number): Observable<Restaurant> {
     return this.http.put<Restaurant>(`${this.url}/addEmployee/${employeeId}`, restaurant, httpOptions);
   }
+
+  addMenu(restaurant: Restaurant, menuId: number): Observable<Restaurant> {
+    return this.http.put<Restaurant>(`${this.url}/addMenu/${menuId}`, restaurant, httpOptions);
+  }
 }

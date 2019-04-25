@@ -1,3 +1,19 @@
-<p>
-  menu works!
-</p>
+<h2>Menus</h2>
+
+<div class="form-group">
+  <select class="custom-select" id="dropdown">
+    <option selected="">Select a menu</option>
+  </select>
+</div>
+
+<div class="form-group">
+  <label class="col-form-label" for="inputDefault">Create a new menu</label>
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" [(ngModel)]="newMenuName" placeholder="Lunch, Dinner, Happy Hour, Dessert, etc." id="inputDefault">
+    <div class="input-group-append">
+      <span class="input-group-text"  (click)="addMenu()" id="createMenu">Add</span>
+    </div>
+  </div>
+</div>
+
+<div *ngFor="let menu of menus">{{menu.name}}</div>

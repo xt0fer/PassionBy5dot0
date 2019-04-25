@@ -9,4 +9,10 @@ export class Menu {
   menuItems: MenuItem[];
   restaurant: Restaurant;
 
+  constructor(name: string){
+    this.name = name;
+    this.description = "";
+    this.menuItems = [];
+    this.restaurant = null;
+  }
 }
