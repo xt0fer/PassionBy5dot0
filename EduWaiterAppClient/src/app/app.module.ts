@@ -19,6 +19,8 @@ import { EmployeeHomeComponent } from './components/home/employee-home/employee-
 import { RestaurantComponent } from './components/restaurant/restaurant.component';
 import { MenuComponent } from './components/menu/menu.component';
 import {MenuService} from "./services/menu.service";
+import { MenuEditorComponent } from './components/menu/menu-editor/menu-editor.component';
+import { MenuDetailComponent } from './components/menu/menu-detail/menu-detail.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import {MenuService} from "./services/menu.service";
     AdminHomeComponent,
     EmployeeHomeComponent,
     RestaurantComponent,
-    MenuComponent
+    MenuComponent,
+    MenuEditorComponent,
+    MenuDetailComponent
   ],
   imports: [
     BrowserModule,

@@ -39,6 +39,7 @@ export class AccountService {
   }
 
   loginAdmin(username: string, password: string) {
+    this.storage.store("employee", null);
     return this.findAdminByUsername(username).pipe(
       map(admin => {
         this.storage.store("admin", admin);
@@ -65,6 +66,7 @@ export class AccountService {
   }
 
   loginEmployee(username: string, password: string) {
+    this.storage.store("admin", null);
     return this.findEmployeeByUsername(username).pipe(
       map(employee => {
         this.storage.store("employee", employee);

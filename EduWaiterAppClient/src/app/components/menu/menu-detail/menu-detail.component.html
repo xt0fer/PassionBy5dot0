@@ -1,0 +1,16 @@
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-md-9">
+      <h1>{{menu.name}}</h1>
+    </div>
+    <div *ngIf="admin" align="center">
+      <button type="button" class="btn btn-secondary">Add Menu Item</button>
+      <button type="button" class="btn btn-primary">Edit Menu Description</button>
+
+      <button type="button" class="btn btn-danger" (click)="goBack()">Back</button>
+    </div>
+  </div>
+
+</div>

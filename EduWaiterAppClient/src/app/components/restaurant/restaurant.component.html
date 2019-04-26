@@ -1,7 +1,7 @@
 <div class="container">
 
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-5">
 
       <h1>My Restaurant</h1>
       <h2>{{currentRestaurant.name}}</h2>
@@ -20,8 +20,14 @@
         </li>
       </ul>
     </div>
-    <div class="col-md-6">
+
+    <div *ngIf="!currentMenu">
       <app-menu></app-menu>
     </div>
+    <div *ngIf="currentMenu">
+      <app-menu-detail></app-menu-detail>
+    </div>
+
+
   </div>
 </div>

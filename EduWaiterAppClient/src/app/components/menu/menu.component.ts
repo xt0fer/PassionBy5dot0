@@ -4,6 +4,7 @@ import {Restaurant} from "../../models/restaurant";
 import {LocalStorageService} from "ngx-webstorage";
 import {MenuService} from "../../services/menu.service";
 import {RestaurantService} from "../../services/restaurant.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-menu',
@@ -15,10 +16,10 @@ export class MenuComponent implements OnInit {
 
   employee: Account;
   admin: Account;
-  restaurant: Restaurant;
+  restaurant: Restaurant = new Restaurant();
   currentMenu: Menu;
   newMenuName: string;
-  dropdown: any;
+  selectedLevel: any;
 
   constructor(private storage: LocalStorageService,
               private menuService: MenuService,
@@ -26,30 +27,33 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dropdown = document.getElementById("dropdown");
+    this.currentMenu = null;
+    this.storage.store("currentMenu", null);
     this.admin = this.storage.retrieve("admin");
     this.employee = this.storage.retrieve("employee");
     this.restaurantService.findById(this.storage.retrieve("restaurant").id).subscribe(restaurant => {
-      this.populateDropdown(restaurant.menus);
       this.restaurant = restaurant;
     });
   }
 
-  addMenu() {
-    this.menuService.createMenu(new Menu(this.newMenuName)).subscribe(newMenu => {
-      this.restaurantService.addMenu(this.restaurant, newMenu.id).subscribe(restaurant => {
-        this.storage.store("restaurant", restaurant);
-        this.currentMenu = newMenu;
-        this.dropdown[this.dropdown.options.length] = new Option(newMenu.name);
-      });
-    });
-
-  }
-
-  populateDropdown(menus: Menu[]) {
-    for (let i = 0; i < menus.length; i++) {
-      this.dropdown.options[this.dropdown.options.length] = new Option(menus[i].name);
+  selected() {
+    if (this.selectedLevel) {
+      this.storage.store("currentMenu", this.selectedLevel);
     }
   }
 
+
+  addMenu() {
+    if (this.newMenuName) {
+      this.menuService.createMenu(new Menu(this.newMenuName)).subscribe(newMenu => {
+        this.restaurantService.addMenu(this.restaurant, newMenu.id).subscribe(restaurant => {
+          this.storage.store("restaurant", restaurant);
+          this.storage.store("currentMenu", newMenu);
+          this.restaurant = restaurant;
+          this.currentMenu = newMenu;
+        });
+      });
+    }
+
+  }
 }
