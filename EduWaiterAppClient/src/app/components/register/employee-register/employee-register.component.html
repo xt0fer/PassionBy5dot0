@@ -1,37 +1,51 @@
 <body>
-<h2>Register as Employee</h2>
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+<div class="container">
 
-  <div class="form-group">
-    <label for="firstName">First Name: </label>
-    <input id="firstName"  autocomplete="off"  type="text" formControlName="firstName" class="form-control form-control-sm" />
+  <div class="row">
+    <div class="col-md-6">
+      <h2>Register as Employee</h2>
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+          <label for="firstName">First Name: </label>
+          <input id="firstName" autocomplete="off" type="text" formControlName="firstName"
+                 class="form-control form-control-sm"/>
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name: </label>
+          <input id="lastName" autocomplete="off" type="text" formControlName="lastName"
+                 class="form-control form-control-sm"/>
+        </div>
+        <div class="form-group">
+          <label for="username">Username: </label>
+          <input id="username" autocomplete="off" type="text" formControlName="username"
+                 class="form-control form-control-sm"/>
+        </div>
+        <div class="form-group">
+          <label for="password">Password: </label>
+          <show-hide-password size="sm" btnStyle="primary" [btnOutline]="false">
+            <input id="password" autocomplete="off" type="password" formControlName="password"
+                   class="form-control form-control-sm"/>
+          </show-hide-password>
+        </div>
+        <div class="form-group">
+          <label for="restaurantId">Restaurant ID: </label>
+          <input id="restaurantId" autocomplete="off" type="text" formControlName="restaurantId"
+                 class="form-control form-control-sm"/>
+        </div>
+        <div class="form-group">
+          <label for="restaurantPassword">Restaurant Password: </label>
+          <show-hide-password size="sm" btnStyle="primary" [btnOutline]="false">
+            <input id="restaurantPassword" autocomplete="off" type="password" formControlName="restaurantPassword"
+                   class="form-control form-control-sm"/>
+          </show-hide-password>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary">Register</button>
+        </div>
+      </form>
+      <br>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="lastName">Last Name: </label>
-    <input id = "lastName" autocomplete="off"  type="text" formControlName="lastName" class="form-control form-control-sm"/>
-  </div>
-  <div class="form-group">
-    <label for="username">Username: </label>
-    <input id = "username" autocomplete="off"  type="text" formControlName="username" class="form-control form-control-sm"/>
-  </div>
-  <div class="form-group">
-    <label for="password">Password: </label>
-    <show-hide-password size="sm" btnStyle="primary" [btnOutline]="false">
-      <input id="password"  autocomplete="off"  type="password" formControlName="password" class="form-control form-control-sm" />
-    </show-hide-password>
-  </div>
-  <div class="form-group">
-    <label for="restaurantId">Restaurant ID: </label>
-    <input id = "restaurantId" autocomplete="off"  type="text" formControlName="restaurantId" class="form-control form-control-sm"/>
-  </div>
-  <div class="form-group">
-    <label for="restaurantPassword">Restaurant Password: </label>
-    <show-hide-password size="sm" btnStyle="primary" [btnOutline]="false">
-      <input id="restaurantPassword"  autocomplete="off"  type="password" formControlName="restaurantPassword" class="form-control form-control-sm"/>
-    </show-hide-password>
-  </div>
-  <div class="form-group">
-    <button class="btn btn-primary">Register</button>
-  </div>
-</form>
-<br>
+</div>
+</body>

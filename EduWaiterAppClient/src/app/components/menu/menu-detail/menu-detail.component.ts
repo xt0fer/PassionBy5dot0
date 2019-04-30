@@ -4,6 +4,7 @@ import {Menu} from "../../../models/menu";
 import {MenuItem} from "../../../models/menu-item";
 import {AdminAccount} from "../../../models/admin-account";
 import {EmployeeAccount} from "../../../models/employee-account";
+import {MenuService} from "../../../services/menu.service";
 
 @Component({
   selector: 'app-menu-detail',
@@ -16,8 +17,10 @@ export class MenuDetailComponent implements OnInit {
   menuItems: MenuItem[];
   admin: AdminAccount;
   employee: EmployeeAccount;
+  editing: boolean;
 
-  constructor(private storage: LocalStorageService) {
+  constructor(private storage: LocalStorageService,
+              private menuService: MenuService) {
   }
 
   ngOnInit() {
@@ -29,6 +32,15 @@ export class MenuDetailComponent implements OnInit {
   goBack(){
     this.storage.store("currentMenu", null);
   }
+
+  saveDescription(){
+    this.menuService.updateDescription(this.menu, this.menu.description).subscribe(menu => {
+      this.storage.store("currentMenu", menu);
+      this.editing = false;
+    });
+  }
+
+
 
   addMenuItem(){}
 

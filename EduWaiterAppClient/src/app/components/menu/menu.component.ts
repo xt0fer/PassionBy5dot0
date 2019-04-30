@@ -47,13 +47,16 @@ export class MenuComponent implements OnInit {
     if (this.newMenuName) {
       this.menuService.createMenu(new Menu(this.newMenuName)).subscribe(newMenu => {
         this.restaurantService.addMenu(this.restaurant, newMenu.id).subscribe(restaurant => {
-          this.storage.store("restaurant", restaurant);
-          this.storage.store("currentMenu", newMenu);
-          this.restaurant = restaurant;
-          this.currentMenu = newMenu;
+          console.log(restaurant.id);
+          this.menuService.updateRestaurant(newMenu, restaurant.id).subscribe(menu => {
+            console.log(menu);
+            this.storage.store("restaurant", restaurant);
+            this.storage.store("currentMenu", menu);
+            this.restaurant = restaurant;
+            this.currentMenu = menu;
+          });
         });
       });
     }
-
   }
 }

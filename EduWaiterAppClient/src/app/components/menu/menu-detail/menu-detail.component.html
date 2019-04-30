@@ -1,15 +1,23 @@
 <div class="container">
-
   <div class="row">
-
-    <div class="col-md-9">
+    <div class="col-md-12">
       <h1>{{menu.name}}</h1>
-    </div>
-    <div *ngIf="admin" align="center">
-      <button type="button" class="btn btn-secondary">Add Menu Item</button>
-      <button type="button" class="btn btn-primary">Edit Menu Description</button>
+      <p>{{menu.description}}</p>
 
-      <button type="button" class="btn btn-danger" (click)="goBack()">Back</button>
+      <div *ngIf="admin" align="center">
+        <button type="button" class="btn btn-secondary">Add Menu Item</button>
+        <button type="button" class="btn btn-primary" (click)="editing=true">Edit Menu Description</button>
+        <button type="button" class="btn btn-danger" (click)="goBack()">Back</button>
+
+        <div *ngIf="editing">
+          <div class="form-group">
+            <label for="menuDescription">Enter a menu description:</label>
+            <textarea class="form-control" [(ngModel)]="menu.description" id="menuDescription" rows="3"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" (click)="saveDescription()">Save</button>
+        </div>
+      </div>
+
     </div>
   </div>
 

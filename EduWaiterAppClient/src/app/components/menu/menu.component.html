@@ -1,24 +1,31 @@
-<h2>Menus</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
 
-<label class="col-form-label" for="menus">Select a menu</label>
-<div class="form-group">
-  <select class="custom-select" [(ngModel)]="selectedLevel" (change)="selected()" id="menus">
-    <option *ngFor="let menu of restaurant.menus" [ngValue]="menu">{{menu.name}}</option>
-  </select>
-</div>
+      <h2>Menus</h2>
 
-
-<div *ngIf="admin">
-  <div class="form-group">
-    <label class="col-form-label" for="menuName">Create a new menu</label>
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" autocomplete="off" [(ngModel)]="newMenuName"
-             placeholder="Lunch, Dinner, etc." id="menuName">
-      <div class="input-group-append">
-        <span class="input-group-text" (click)="addMenu()" id="createMenu">Add</span>
-        <br>
+      <label class="col-form-label" for="menus">Select a menu</label>
+      <div class="form-group">
+        <select class="custom-select" [(ngModel)]="selectedLevel" (change)="selected()" id="menus">
+          <option *ngFor="let menu of restaurant.menus" [ngValue]="menu">{{menu.name}}</option>
+        </select>
       </div>
+
+
+      <div *ngIf="admin">
+        <div class="form-group">
+          <label class="col-form-label" for="menuName">Create a new menu</label>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" autocomplete="off" [(ngModel)]="newMenuName"
+                   placeholder="Lunch, Dinner, etc." id="menuName">
+            <div class="input-group-append">
+              <span class="input-group-text" (click)="addMenu()" id="createMenu">Add</span>
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
-
