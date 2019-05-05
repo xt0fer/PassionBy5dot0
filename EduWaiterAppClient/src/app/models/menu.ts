@@ -9,10 +9,11 @@ export class Menu {
   menuItems: MenuItem[];
   restaurant: Restaurant;
 
-  constructor(name: string){
+  constructor(id, name, description, menuItems, restaurant){
+    this.id = id;
     this.name = name;
-    this.description = "";
-    this.menuItems = [];
-    this.restaurant = null;
+    this.description = description;
+    this.menuItems = menuItems;
+    this.restaurant = restaurant;
   }
 }

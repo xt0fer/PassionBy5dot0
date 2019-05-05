@@ -74,8 +74,10 @@ public class RestaurantService {
     public Restaurant addMenu(Restaurant restaurant, Long menuId){
         Menu menu = menuRepository.getOne(menuId);
         restaurant.getMenus().add(menu);
-        menu.setRestaurant(restaurant);
-        menuRepository.save(menu);
+        for(Menu m: restaurant.getMenus()){
+            m.setRestaurant(restaurant);
+        }
+        menuRepository.saveAll(restaurant.getMenus());
         return restaurantRepository.save(restaurant);
     }
 

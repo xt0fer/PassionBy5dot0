@@ -2,6 +2,7 @@ package com.caraeppes.EduWaiterAppServer.controllers;
 
 import com.caraeppes.EduWaiterAppServer.models.Menu;
 import com.caraeppes.EduWaiterAppServer.services.MenuService;
+import com.caraeppes.EduWaiterAppServer.services.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,6 +39,16 @@ public class MenuController {
     @PutMapping("/update/{id}")
     public ResponseEntity<Menu> update(@RequestBody Menu menu, @PathVariable Long id){
         return new ResponseEntity<>(menuService.update(menu, id), HttpStatus.OK);
+    }
+
+    @PutMapping("/updateDescription/{description}")
+    public ResponseEntity<Menu> updateDescription(@RequestBody Menu menu, @PathVariable String description){
+        return new ResponseEntity<>(menuService.updateDescription(menu, description), HttpStatus.OK);
+    }
+
+    @PutMapping("/updateRestaurant/{restaurantId}")
+    public ResponseEntity<Menu> updateRestaurant(@RequestBody Menu menu, @PathVariable Long restaurantId){
+        return new ResponseEntity<>(menuService.updateRestaurant(menu, restaurantId), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

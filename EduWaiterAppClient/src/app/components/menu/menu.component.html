@@ -6,7 +6,7 @@
 
       <label class="col-form-label" for="menus">Select a menu</label>
       <div class="form-group">
-        <select class="custom-select" [(ngModel)]="selectedLevel" (change)="selected()" id="menus">
+        <select class="custom-select" [(ngModel)]="selectedMenu" (change)="selected()" id="menus">
           <option *ngFor="let menu of restaurant.menus" [ngValue]="menu">{{menu.name}}</option>
         </select>
       </div>

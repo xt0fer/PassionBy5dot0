@@ -4,7 +4,6 @@ import {Restaurant} from "../../models/restaurant";
 import {LocalStorageService} from "ngx-webstorage";
 import {MenuService} from "../../services/menu.service";
 import {RestaurantService} from "../../services/restaurant.service";
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-menu',
@@ -19,7 +18,7 @@ export class MenuComponent implements OnInit {
   restaurant: Restaurant = new Restaurant();
   currentMenu: Menu;
   newMenuName: string;
-  selectedLevel: any;
+  selectedMenu: any;
 
   constructor(private storage: LocalStorageService,
               private menuService: MenuService,
@@ -37,19 +36,18 @@ export class MenuComponent implements OnInit {
   }
 
   selected() {
-    if (this.selectedLevel) {
-      this.storage.store("currentMenu", this.selectedLevel);
+    if (this.selectedMenu) {
+      console.log(this.selectedMenu);
+      this.storage.store("currentMenu", this.selectedMenu);
     }
   }
 
 
   addMenu() {
     if (this.newMenuName) {
-      this.menuService.createMenu(new Menu(this.newMenuName)).subscribe(newMenu => {
+      this.menuService.createMenu(new Menu(null, this.newMenuName, "", [], null)).subscribe(newMenu => {
         this.restaurantService.addMenu(this.restaurant, newMenu.id).subscribe(restaurant => {
-          console.log(restaurant.id);
           this.menuService.updateRestaurant(newMenu, restaurant.id).subscribe(menu => {
-            console.log(menu);
             this.storage.store("restaurant", restaurant);
             this.storage.store("currentMenu", menu);
             this.restaurant = restaurant;
