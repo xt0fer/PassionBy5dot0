@@ -65,8 +65,8 @@ export class AdminRegisterComponent implements OnInit {
         "}";
       this.accountService.registerAdmin(JSON.parse(adminJson)).subscribe(admin => {
         this.restaurantService.addAdmin(restaurant, admin.id).subscribe(restaurant => {
-            this.storage.store("restaurant", restaurant);
-            this.storage.store("admin", admin);
+          this.storage.store("restaurant", restaurant);
+          this.storage.store("admin", admin);
         });
       });
     });
@@ -85,12 +85,15 @@ export class AdminRegisterComponent implements OnInit {
       "}";
     let restaurantId: number = this.existingRestaurantRegisterForm.controls.restaurantId.value;
     this.accountService.registerAdmin(JSON.parse(adminJson)).subscribe(admin => {
-        this.accountService.adminUpdateRestaurant(restaurantId, admin).subscribe(admin => {
-            this.storage.store("restaurant", admin.restaurant);
-            this.storage.store("admin", admin);
+      this.accountService.adminUpdateRestaurant(restaurantId, admin).subscribe(admin => {
+        this.restaurantService.findById(admin.restaurant.id).subscribe(restaurant => {
+          this.storage.store("restaurant", restaurant);
+          admin.restaurant = restaurant;
+          this.storage.store("admin", admin);
           this.router.navigate(['/home']);
-          });
         });
+      });
+    });
   }
 
   makeNewRestaurant(): void {

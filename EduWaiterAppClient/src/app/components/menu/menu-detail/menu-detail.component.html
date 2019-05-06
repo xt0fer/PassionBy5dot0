@@ -3,6 +3,9 @@
     <div class="col-md-12">
       <h1>{{menu.name}}</h1>
       <p>{{menu.description}}</p>
+      <div *ngIf="employee" align="center">
+        <button type="button" class="btn btn-danger" (click)="goBack()">Back</button>
+      </div>
 
       <div *ngIf="admin" align="center">
         <button type="button" class="btn btn-secondary">Add Menu Item</button>

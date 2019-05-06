@@ -26,12 +26,13 @@ public class Restaurant {
     @JsonIgnoreProperties(value = "restaurant", allowSetters=true)
     private List<Menu> menus;
     @OneToMany(mappedBy = "restaurant")
-    @JsonSerialize(using = AdminSerializer.class)
+    @JsonIgnoreProperties(value = "restaurant")
     private List<AdminAccount> admin;
     @OneToMany(mappedBy = "restaurant")
-    @JsonSerialize(using = EmployeeSerializer.class)
+    @JsonIgnoreProperties(value = "restaurant")
     private List<EmployeeAccount> employees;
     @OneToMany(mappedBy = "restaurant")
+    @JsonIgnoreProperties(value = "restaurant")
     private List<Fact> facts;
 
     public Restaurant() {

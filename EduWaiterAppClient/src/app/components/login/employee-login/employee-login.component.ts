@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
 import {AccountService} from "../../../services/account.service";
@@ -20,7 +20,8 @@ export class EmployeeLoginComponent implements OnInit {
               private router: Router,
               private accountService: AccountService,
               private storage: LocalStorageService,
-              private restaurantService: RestaurantService) { }
+              private restaurantService: RestaurantService) {
+  }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -35,16 +36,18 @@ export class EmployeeLoginComponent implements OnInit {
     this.accountService.loginEmployee(username, password).subscribe(success => {
       this.response = success;
       this.submitted = true;
-      if(this.response instanceof Object){
+      if (this.response instanceof Object) {
         this.updateRestaurant(username);
         this.router.navigate(["/home"]);
       }
     });
   }
 
-  updateRestaurant(username: string){
+  updateRestaurant(username: string) {
     this.accountService.findEmployeeByUsername(username).subscribe(employee => {
-      this.storage.store("restaurant", employee.restaurant);
+      this.restaurantService.findById(employee.restaurant.id).subscribe(restaurant => {
+        this.storage.store("restaurant", restaurant);
+      });
     });
   }
 }

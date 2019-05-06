@@ -46,7 +46,10 @@ export class AdminLoginComponent implements OnInit {
 
   updateRestaurant(username: string) {
     this.accountService.findAdminByUsername(username).subscribe(admin => {
-      this.storage.store("restaurant", admin.restaurant);
+      this.restaurantService.findById(admin.restaurant.id).subscribe(restaurant => {
+        this.storage.store("restaurant", restaurant);
+        console.log(restaurant);
+      });
     });
   }
 }

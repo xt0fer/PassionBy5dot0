@@ -1,10 +1,8 @@
 package com.caraeppes.EduWaiterAppServer.models;
 
 import com.caraeppes.EduWaiterAppServer.utilities.MenuItemSerializer;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -17,10 +15,13 @@ public class Menu {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "menu_id")
     private Long id;
+
     @Column(name = "menu_name")
     private String name;
+
     @Column(name = "description")
     private String description;
+
     @ManyToMany
     @JoinTable(
             name="menu_menu_items",
@@ -28,9 +29,10 @@ public class Menu {
             inverseJoinColumns=@JoinColumn(name="menu_item_id", referencedColumnName = "menu_item_id"))
     @JsonSerialize(using = MenuItemSerializer.class)
     private List<MenuItem> menuItems;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "restaurant_id")
-    @JsonIgnoreProperties(value = "menus", allowSetters=true)
+    @JsonIgnoreProperties({"password", "menus", "admin", "employees", "facts"})
     private Restaurant restaurant;
 
     public Menu() {

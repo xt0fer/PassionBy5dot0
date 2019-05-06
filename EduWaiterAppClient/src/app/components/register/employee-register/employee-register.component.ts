@@ -48,11 +48,12 @@ export class EmployeeRegisterComponent implements OnInit {
     console.log(restaurantId);
     this.accountService.registerEmployee(JSON.parse(json)).subscribe(account => {
       this.accountService.employeeUpdateRestaurant(restaurantId, account).subscribe(account => {
-        this.storage.store("restaurant", account.restaurant);
-        this.storage.store("employee", account);
-        this
-          .router
-          .navigate(['/home']);
+        this.restaurantService.findById(account.restaurant.id).subscribe(restaurant => {
+          this.storage.store("restaurant", restaurant);
+          account.restaurant = restaurant;
+          this.storage.store("employee", account);
+          this.router.navigate(['/home']);
+        });
       });
     });
   }
