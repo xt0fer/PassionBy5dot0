@@ -1,8 +1,5 @@
-<div class="container">
-
-  <div class="row">
-    <div class="col-md-5">
-
+<div class="row justify-content-xl-left">
+    <div class="col-xl-3">
       <h1>My Restaurant</h1>
       <h2>{{currentRestaurant.name}}</h2>
       <br>
@@ -20,14 +17,10 @@
         </li>
       </ul>
     </div>
-
-    <div *ngIf="!currentMenu">
+    <div *ngIf="!currentMenu" class="col-xl-4">
       <app-menu></app-menu>
     </div>
-    <div *ngIf="currentMenu">
+    <div *ngIf="currentMenu" class="col-xl-6">
       <app-menu-detail></app-menu-detail>
     </div>
-
-
-  </div>
-</div>
+    </div>
