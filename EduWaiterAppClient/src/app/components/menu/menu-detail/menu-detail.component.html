@@ -1,0 +1,28 @@
+<div class="row">
+<div class="col-xl-8">
+
+      <h1>{{menu.name}}</h1>
+      <p>{{menu.description}}</p>
+      <div *ngIf="employee" align="center">
+        <button type="button" class="btn btn-danger" (click)="goBack()">Back</button>
+      </div>
+
+      <div *ngIf="admin" align="center">
+        <button type="button" class="btn btn-secondary" (click)="addingItem=true">Add Menu Item</button>
+        <button type="button" class="btn btn-primary" (click)="editing=true">Edit Menu Description</button>
+        <button type="button" class="btn btn-danger" (click)="goBack()">Back</button>
+
+        <div *ngIf="editing">
+          <div class="form-group">
+            <label for="menuDescription">Enter a menu description:</label>
+            <textarea class="form-control" [(ngModel)]="menu.description" id="menuDescription" rows="3"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" (click)="saveDescription()">Save</button>
+        </div>
+      </div>
+    </div>        
+    
+    <div *ngIf="addingItem" class="col-xl-4">
+        <app-menu-editor></app-menu-editor>
+      </div>
+</div>
