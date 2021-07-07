@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Select the category</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content  class ="myview" >
+  <ion-list>
+    <button ion-item *ngFor="let category of categories" (click)="itemTapped($event, category)">
+      {{category.name}}
+      <div class="item-note" item-end>
+        {{category.description}}
+      </div>
+    </button>
+  </ion-list>
+  <div *ngIf="selectedItem" padding>
+    You navigated here from <b>{{selectedItem.title}}</b>
+  </div>
+</ion-content>

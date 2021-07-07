@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class ="myview" padding>
+  <div class = "login" >
+    <img ion-img src="../../assets/imgs/images.png" width="50%"/>
+    <div class = "top-spacing">
+      <input ion-input [(ngModel)]="username" placeholder="Username"/></div>
+    <div class = "top-spacing">
+      <input ion-input type="password" [(ngModel)]="password" placeholder="Password"/>
+    </div>
+    <button ion-button class = "top-spacing" (click)="onClick()">Login</button>
+  </div>
+</ion-content>

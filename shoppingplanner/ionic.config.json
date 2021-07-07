@@ -1,0 +1,8 @@
+{
+  "name": "shoppingplanner",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "id": "f71c927e"
+}

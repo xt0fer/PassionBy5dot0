@@ -1,0 +1,23 @@
+page-shopping-items {
+    .selected {
+        background-image: url('../../assets/imgs/g2TpEe.jpg');
+        text-align: center;
+    }
+    .details{
+        margin-top: 10px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        padding: 40px 30px 30px 30px; 
+        background: rgb(178, 201, 200) ;
+        border: 1px solid  rgb(128, 130, 131);
+    }
+    .top-spacing{
+        margin-top: 20px;
+    }
+    .highlight {
+        background-color: rgb(142, 208, 235) !important;
+        color: rgb(255, 255, 255);
+     }
+}

@@ -1,0 +1,93 @@
+
+page-items-list {
+    .myview {
+        background-image: url('../../assets/imgs/g2TpEe.jpg');
+        text-align: center;
+    }
+    .selected {
+        background-color: #CFD8DC !important;
+        color: white;
+      }
+      .shoppingItem {
+        margin: 20px 20px 80px 20px;
+        list-style-type: none;
+        
+       }
+      .shoppingItem li {
+        cursor: pointer;
+        position: relative;
+        left: 0;
+        background-color: #EEE;
+        margin: .5em;
+        padding: .3em 0;
+        height: 1.6em;
+        border-radius: 4px;
+        background-image:url("../../assets/imgs/22665-200.png")  ;
+        background-position-y: center;
+        background-size: 25px;
+        background-repeat:no-repeat;
+        padding-bottom: 50px;
+      }
+      .shoppingItem li.selected:hover {
+        background-color: #BBD8DC !important;
+        color: white;
+        transform: scale(1.2);
+      }
+      .shoppingItem li:hover {
+        color: #607D8B;
+        background-color: #DDD;
+        left: .1em;
+      }
+      .shoppingItem .text {
+     
+        position: relative;
+        top: -3px;
+      }
+      .shoppingItem .badge {
+        margin-left: 30px;
+        display:grid;
+        grid-template-columns: auto fit-content(10%);
+        text-align: left;
+        font-size: medium;
+        color: white;
+        background-color: #607D8B;
+        line-height: 1em;
+        position: relative;
+        left: -1px;
+        top: 4px;
+        padding: 10px 10px 10px 10px;
+        border-radius: 4px 0 0 4px;
+      }     
+      .shoppingItem .item-detail {
+        display:grid;
+        grid-template-columns: auto;
+      }
+      .delete{
+        background: rgb(206, 24, 24);
+        font-size: large;
+        color: white;
+        width: 30px;
+        text-align: right;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+      }
+      .edit{
+        background: rgb(241, 245, 247);
+        background-image: url("../../assets/imgs/edit.png");
+        background-position-y: center;
+        background-size: 30px;
+        background-repeat:no-repeat;
+        width: 30px;
+        text-align: right;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+      }
+      .edit:hover{
+        background-color: rgb(164, 235, 174) !important;
+      }
+      .delete:hover{
+        background-color: rgb(231, 145, 139) !important;
+      }
+
+      .button-list{
+        display: inline;
+      }
+}
